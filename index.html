@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Top Note Scent Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #1A1512;
+  --cream: #E8DCC8;
+  --amber: #C89B5C;
+  --terracotta: #8B4A3C;
+  --mauve: #A67C6D;
+  --deep-70: rgba(26, 21, 18, 0.7);
+  --mauve-40: rgba(166, 124, 109, 0.4);
+  --amber-15: rgba(200, 155, 92, 0.15);
+  --amber-hover: #B38A4F;
+  --ease-state: cubic-bezier(.4, 0, .2, 1);
+  --ease-entrance: cubic-bezier(.16, 1, .3, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--deep); font-family: 'DM Sans', system-ui, sans-serif; color: var(--cream); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* NAV */
+.nav { position: sticky; top: 0; z-index: 50; height: 64px; background: var(--deep); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+.wordmark { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--cream); line-height: 1; }
+.wordmark-bold { font-weight: 800; }
+.wordmark-light { font-weight: 300; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cream); transition: color 140ms var(--ease-state); padding-bottom: 4px; border-bottom: 2px solid transparent; }
+.nav-links a:hover { color: var(--amber); }
+.nav-links a.active { border-bottom-color: var(--amber); }
+.nav-links a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.hamburger { display: none; flex-direction: column; gap: 6px; padding: 8px; }
+.hamburger span { display: block; width: 24px; height: 1px; background: var(--cream); transition: transform 240ms var(--ease-state), opacity 240ms var(--ease-state); }
+
+/* MOBILE MENU */
+.mobile-menu { position: fixed; inset: 0; z-index: 100; background: var(--deep); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; transform: translateY(-100%); transition: transform 240ms var(--ease-state); }
+.mobile-menu.open { transform: translateY(0); }
+.mobile-menu a { font-family: 'Anybody', sans-serif; font-weight: 400; font-size: 28px; color: var(--cream); text-transform: uppercase; letter-spacing: 0.02em; transition: color 140ms var(--ease-state); }
+.mobile-menu a:hover { color: var(--amber); }
+.mobile-menu-close { position: absolute; top: 16px; right: 32px; font-size: 28px; color: var(--cream); background: none; border: none; cursor: pointer; padding: 8px; font-family: 'DM Sans', sans-serif; font-weight: 300; }
+
+/* HERO */
+.hero { position: relative; height: 78vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.hero-media { position: absolute; inset: 0; }
+.hero-media video,
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 64%; filter: saturate(0.85); }
+.hero-media img { position: absolute; inset: 0; }
+.hero-overlay { position: absolute; inset: 0; background: var(--deep-70); z-index: 1; }
+.hero-content { position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.hero h1 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 135; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--cream); font-size: clamp(44px, 8vw, 88px); line-height: 1.05; }
+.hero-subline { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
+.scroll-hint { position: absolute; bottom: 32px; left: 50%; width: 1px; height: 40px; background: var(--mauve); z-index: 2; animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+/* INTRO */
+.intro { background: var(--cream); padding: 96px 32px; }
+.intro p { max-width: 640px; margin: 0 auto; text-align: center; font-size: 1.25rem; line-height: 1.6; color: var(--deep); }
+
+/* SECTION HEADER */
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-header .eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); margin-bottom: 16px; display: block; }
+.section-header h2 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 48px); color: var(--cream); margin-bottom: 16px; text-wrap: balance; }
+.section-header .subtitle { font-size: 1rem; color: var(--mauve); line-height: 1.5; }
+
+/* SERVICES */
+.services { background: var(--deep); padding: 96px 32px; }
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.card { border-top: 2px solid var(--amber); padding: 32px 0; }
+.card .card-eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); margin-bottom: 12px; display: block; }
+.card h3 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.25rem; color: var(--cream); margin-bottom: 16px; }
+.card p { font-size: 15px; line-height: 1.6; color: var(--mauve); margin-bottom: 24px; }
+.ghost-link { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cream); transition: color 140ms var(--ease-state); }
+.ghost-link:hover { color: var(--amber); }
+.ghost-link:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+/* CTA BAND */
+.cta-band { padding: 96px 32px; text-align: center; background: var(--amber); }
+.cta-band h2 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 44px); color: var(--deep); margin-bottom: 16px; text-wrap: balance; }
+.cta-band .cta-body { font-size: 1rem; color: var(--deep); opacity: 0.8; margin-bottom: 40px; }
+.partner-label { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--deep); opacity: 0.7; margin-bottom: 16px; display: block; }
+.partner-logos { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; max-width: 1000px; margin: 0 auto; }
+.partner-logo { width: 180px; height: 76px; border: 1px solid rgba(26, 21, 18, 0.35); display: grid; place-items: center; font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 13px; color: var(--deep); opacity: 0.75; padding: 0 12px; text-align: center; }
+
+/* FOOTER */
+.footer { background: var(--deep); padding: 64px 32px; border-top: 1px solid var(--mauve-40); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; }
+.footer .wordmark { margin-bottom: 16px; }
+.footer-tagline { font-size: 14px; color: var(--mauve); line-height: 1.5; }
+.footer h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: var(--cream); transition: color 140ms var(--ease-state); }
+.footer-links a:hover { color: var(--amber); }
+.footer-legal { grid-column: 1 / -1; font-size: 13px; color: var(--mauve); padding-top: 32px; border-top: 1px solid var(--mauve-40); }
+
+/* SCROLL ANIMATIONS */
+.fade-in { opacity: 0; transform: translateY(16px); transition: opacity 520ms var(--ease-entrance), transform 520ms var(--ease-entrance); }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav { height: 56px; padding: 0 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { height: 70vh; }
+  .hero h1 { font-size: clamp(36px, 10vw, 44px); }
+  .intro { padding: 64px 20px; }
+  .services { padding: 64px 20px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .cta-band { padding: 64px 20px; }
+  .partner-logo { width: 140px; height: 60px; font-size: 11px; }
+  .footer { padding: 48px 20px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .section-header { margin-bottom: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  .scroll-hint { animation: none; opacity: 0.6; }
+  .mobile-menu { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wordmark"><span class="wordmark-bold">TOP</span>&nbsp;<span class="wordmark-light">NOTE.</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Brand Partnerships</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.add('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <button class="mobile-menu-close" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
+  <a href="index.html" onclick="this.parentElement.classList.remove('open')">Home</a>
+  <a href="#" onclick="this.parentElement.classList.remove('open')">Services</a>
+  <a href="#" onclick="this.parentElement.classList.remove('open')">Brand Partnerships</a>
+  <a href="#" onclick="this.parentElement.classList.remove('open')">About Us</a>
+  <a href="#" onclick="this.parentElement.classList.remove('open')">Contact Us</a>
+</div>
+
+<section class="hero">
+  <div class="hero-media">
+    <img src="assets/photography/reaching-dim.jpg" alt="">
+    <video id="heroVideo" autoplay muted loop playsinline poster="assets/photography/reaching-dim.jpg">
+      <source src="assets/photography/motion-03.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Top Note<br>Scent Studio</h1>
+    <span class="hero-subline">Experiential scent discovery</span>
+  </div>
+  <div class="scroll-hint"></div>
+</section>
+
+<section class="intro fade-in">
+  <p>[FOUNDERS TO WRITE: 2&ndash;3 sentences about what Top Note does. Warm, inviting tone.]</p>
+</section>
+
+<section class="services">
+  <div class="services-inner">
+    <div class="section-header fade-in">
+      <span class="eyebrow">[Eyebrow]</span>
+      <h2>Services</h2>
+      <span class="subtitle">[FOUNDERS TO WRITE: one line on the offering.]</span>
+    </div>
+    <div class="card-grid">
+      <div class="card fade-in">
+        <span class="card-eyebrow">01</span>
+        <h3>[Service Name 1]</h3>
+        <p>[Service description &mdash; 1&ndash;2 sentences.]</p>
+        <a href="#" class="ghost-link">Learn more</a>
+      </div>
+      <div class="card fade-in">
+        <span class="card-eyebrow">02</span>
+        <h3>[Service Name 2]</h3>
+        <p>[Service description &mdash; 1&ndash;2 sentences.]</p>
+        <a href="#" class="ghost-link">Learn more</a>
+      </div>
+      <div class="card fade-in">
+        <span class="card-eyebrow">03</span>
+        <h3>[Service Name 3]</h3>
+        <p>[Service description &mdash; 1&ndash;2 sentences.]</p>
+        <a href="#" class="ghost-link">Learn more</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band fade-in">
+  <h2>[Partnership Headline]</h2>
+  <p class="cta-body">[One sentence of filler copy.]</p>
+  <span class="partner-label">Brands we've worked with</span>
+  <div class="partner-logos">
+    <div class="partner-logo">[Partner logo 01]</div>
+    <div class="partner-logo">[Partner logo 02]</div>
+    <div class="partner-logo">[Partner logo 03]</div>
+    <div class="partner-logo">[Partner logo 04]</div>
+    <div class="partner-logo">[Partner logo 05]</div>
+    <div class="partner-logo">[Partner logo 06]</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="wordmark"><span class="wordmark-bold">TOP</span>&nbsp;<span class="wordmark-light">NOTE.</span></div>
+      <p class="footer-tagline">[FOUNDERS TO WRITE: one-line tagline.]</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Brand Partnerships</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="#">[FOUNDERS: email]</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+    <p class="footer-legal">&copy; 2026 Top Note Scent Studio. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Hero video: slow to 0.45x, start at 40% of duration
+const video = document.getElementById('heroVideo');
+video.addEventListener('loadedmetadata', () => {
+  video.playbackRate = 0.45;
+  video.currentTime = video.duration * 0.4;
+});
+video.addEventListener('timeupdate', () => {
+  if (video.currentTime < video.duration * 0.4 && video.playbackRate === 0.45) {
+    video.currentTime = video.duration * 0.4;
+  }
+});
+
+// Scroll-in animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
