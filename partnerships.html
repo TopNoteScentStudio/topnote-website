@@ -35,20 +35,17 @@ img { display: block; max-width: 100%; border-radius: 0; }
 .wordmark { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--cream); line-height: 1; }
 .wordmark-bold { font-weight: 800; }
 .wordmark-light { font-weight: 300; }
-.nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cream); transition: color 140ms var(--ease-state); padding-bottom: 4px; border-bottom: 2px solid transparent; text-decoration: none; }
-.nav-links a:hover { color: var(--amber); }
-.nav-links a.active { border-bottom-color: var(--amber); }
-.nav-links a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
-.hamburger { display: none; flex-direction: column; gap: 6px; padding: 8px; background: none; border: none; }
+.nav-links { display: none; }
+.hamburger { display: flex; flex-direction: column; gap: 6px; padding: 8px; background: none; border: none; }
 .hamburger span { display: block; width: 24px; height: 1px; background: var(--cream); }
 
-/* MOBILE MENU */
-.mobile-menu { position: fixed; inset: 0; z-index: 100; background: var(--deep); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; transform: translateY(-100%); transition: transform 240ms var(--ease-state); }
-.mobile-menu.open { transform: translateY(0); }
-.mobile-menu a { font-family: 'Anybody', sans-serif; font-weight: 400; font-size: 28px; color: var(--cream); text-transform: uppercase; letter-spacing: 0.02em; }
-.mobile-menu a:hover { color: var(--amber); }
-.mobile-menu-close { position: absolute; top: 16px; right: 32px; font-size: 28px; color: var(--cream); background: none; border: none; cursor: pointer; padding: 8px; }
+/* DROPDOWN MENU */
+.menu-overlay { position: fixed; inset: 0; z-index: 90; display: none; }
+.menu-overlay.open { display: block; }
+.dropdown-menu { position: fixed; top: 64px; right: 32px; z-index: 100; background: var(--deep); border: 1px solid var(--mauve-40); padding: 16px 32px; display: flex; flex-direction: column; gap: 16px; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state); }
+.dropdown-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.dropdown-menu a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--cream); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); white-space: nowrap; text-decoration: none; }
+.dropdown-menu a:hover { color: var(--amber); }
 
 /* HERO */
 .hero { position: relative; height: 62vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
@@ -61,7 +58,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
 @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
 /* SECTION HEADER */
-.section-header { margin-bottom: 56px; }
+.section-header { margin-bottom: 56px; text-align: center; }
 .section-header .eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); margin-bottom: 16px; display: block; }
 .section-header h2 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 48px); color: var(--cream); margin-bottom: 16px; text-wrap: balance; }
 .section-header .subtitle { font-size: 1rem; color: var(--mauve); line-height: 1.5; }
@@ -69,46 +66,48 @@ img { display: block; max-width: 100%; border-radius: 0; }
 /* DISCOUNT CODES */
 .codes-section { padding: 96px 32px 64px; }
 .codes-section .inner { max-width: 1200px; margin: 0 auto; }
-.codes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+.codes-grid { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; }
+.code-card { width: 280px; flex-shrink: 0; }
 .code-card { border: 1px solid var(--mauve-40); padding: 24px; display: grid; gap: 20px; align-content: start; }
 .code-card .card-eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
 .code-card h3 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.25rem; color: var(--cream); margin-top: 6px; }
 .code-card .note { font-size: 15px; line-height: 1.6; color: var(--mauve); text-wrap: pretty; }
-.discount-code { display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--amber); padding: 12px 16px; cursor: pointer; transition: background 140ms var(--ease-state); }
-.discount-code:hover { background: var(--amber-15); }
-.discount-code .code-text { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; font-size: 16px; letter-spacing: 0.06em; color: var(--amber); }
-.discount-code .code-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
+.discount-code { display: flex; align-items: center; justify-content: space-between; gap: 16px; border: 1px solid var(--terracotta); padding: 12px 16px; cursor: pointer; transition: background 140ms var(--ease-state); }
+.discount-code:hover { background: rgba(139, 74, 60, 0.15); }
+.discount-code .code-text { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; font-size: 16px; letter-spacing: 0.06em; color: var(--terracotta); white-space: nowrap; }
+.discount-code .code-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); white-space: nowrap; text-align: right; flex-shrink: 0; }
 
 /* PRODUCTS */
 .products-section { padding: 32px 32px 96px; }
 .products-section .inner { max-width: 1200px; margin: 0 auto; }
-.filter-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; margin-bottom: 56px; }
+.filter-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; margin-bottom: 56px; justify-content: center; }
 .filter-chip { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 18px; border-radius: 0; border: 1px solid var(--mauve-40); background: transparent; color: var(--cream); cursor: pointer; transition: color 140ms var(--ease-state), background 140ms var(--ease-state), border-color 140ms var(--ease-state); }
-.filter-chip:hover { border-color: var(--amber); }
-.filter-chip.active { background: var(--amber); color: var(--deep); border-color: var(--amber); }
-.filter-chip:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.filter-chip:hover { border-color: var(--terracotta); }
+.filter-chip.active { background: var(--terracotta); color: var(--cream); border-color: var(--terracotta); }
+.filter-chip:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 
-.brand-groups { display: grid; gap: 80px; }
-.brand-group-header { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: baseline; justify-content: space-between; border-top: 2px solid var(--amber); padding-top: 24px; margin-bottom: 32px; }
+.brand-groups { display: grid; gap: 96px; text-align: center; }
+.brand-group-header { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: baseline; justify-content: center; border-top: 2px solid var(--terracotta); padding-top: 40px; margin-bottom: 48px; text-align: center; }
 .brand-group-header h3 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: 2rem; line-height: 1.1; color: var(--cream); }
 .brand-group-header .retailer { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 32px; }
+.product-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
+.product-card { width: 280px; flex-shrink: 0; }
 
 /* PRODUCT CARD */
 .product-card { display: grid; gap: 16px; }
 .product-img { aspect-ratio: 1; background-size: cover; background-position: center; filter: saturate(0.85); }
 .product-brand { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
 .product-name { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.1rem; color: var(--cream); }
-.product-code { display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--amber); padding: 10px 14px; cursor: pointer; transition: background 140ms var(--ease-state); }
-.product-code:hover { background: var(--amber-15); }
-.product-code .code-text { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; font-size: 14px; letter-spacing: 0.06em; color: var(--amber); }
-.product-code .code-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
-.product-cta { display: block; text-align: center; padding: 14px 24px; background: var(--amber); color: var(--deep); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); }
-.product-cta:hover { background: var(--amber-hover); color: var(--deep); }
-.product-cta:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.product-code { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--terracotta); padding: 10px 14px; cursor: pointer; transition: background 140ms var(--ease-state); }
+.product-code:hover { background: rgba(139, 74, 60, 0.15); }
+.product-code .code-text { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; font-size: 14px; letter-spacing: 0.06em; color: var(--terracotta); white-space: nowrap; }
+.product-code .code-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); white-space: nowrap; flex-shrink: 0; }
+.product-cta { display: block; text-align: center; padding: 14px 24px; background: var(--terracotta); color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); }
+.product-cta:hover { background: #6E3A30; color: var(--cream); }
+.product-cta:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 
 /* CTA BAND */
-.cta-band { padding: 96px 32px; text-align: center; background: var(--amber); }
+.cta-band { padding: 96px 32px; text-align: center; background: var(--cream); }
 .cta-band h2 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 44px); color: var(--deep); margin-bottom: 16px; text-wrap: balance; }
 .cta-band .cta-body { font-size: 1rem; color: var(--deep); opacity: 0.8; margin-bottom: 32px; }
 .btn-secondary { display: inline-block; padding: 16px 40px; border: 1px solid var(--deep); color: var(--deep); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; background: transparent; transition: background 140ms var(--ease-state); cursor: pointer; }
@@ -126,7 +125,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
 .footer-legal { grid-column: 1 / -1; font-size: 13px; color: var(--mauve); padding-top: 32px; border-top: 1px solid var(--mauve-40); }
 
 /* TOAST */
-.toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%) translateY(80px); background: var(--deep); border: 1px solid var(--amber); color: var(--amber); font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; padding: 14px 22px; z-index: 60; opacity: 0; transition: transform 240ms var(--ease-state), opacity 240ms var(--ease-state); pointer-events: none; white-space: nowrap; }
+.toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%) translateY(80px); background: var(--deep); border: 1px solid var(--terracotta); color: var(--terracotta); font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; padding: 14px 22px; z-index: 60; opacity: 0; transition: transform 240ms var(--ease-state), opacity 240ms var(--ease-state); pointer-events: none; white-space: nowrap; }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
 /* SCROLL ANIMATIONS */
@@ -136,8 +135,6 @@ img { display: block; max-width: 100%; border-radius: 0; }
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .nav { height: 56px; padding: 0 20px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
   .hero { height: 55vh; }
   .hero h1 { font-size: clamp(32px, 9vw, 40px); }
   .codes-section { padding: 64px 20px 40px; }
@@ -168,18 +165,17 @@ img { display: block; max-width: 100%; border-radius: 0; }
     <li><a href="#">About Us</a></li>
     <li><a href="#">Contact Us</a></li>
   </ul>
-  <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.add('open')">
+  <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<div class="mobile-menu">
-  <button class="mobile-menu-close" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
-  <a href="index.html" onclick="this.parentElement.classList.remove('open')">Home</a>
-  <a href="#" onclick="this.parentElement.classList.remove('open')">Services</a>
-  <a href="partnerships.html" onclick="this.parentElement.classList.remove('open')">Brand Partnerships</a>
-  <a href="#" onclick="this.parentElement.classList.remove('open')">About Us</a>
-  <a href="#" onclick="this.parentElement.classList.remove('open')">Contact Us</a>
+<div class="menu-overlay" onclick="closeMenu()"></div>
+<div class="dropdown-menu">
+  <a href="index.html#home" onclick="closeMenu()">Home</a>
+  <a href="index.html#services" onclick="closeMenu()">Services</a>
+  <a href="index.html#partnerships" onclick="closeMenu()">Brand Partnerships</a>
+  <a href="index.html#contact" onclick="closeMenu()">Contact Us</a>
 </div>
 
 <section class="hero">
@@ -187,7 +183,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1>Brand<br>Partnerships</h1>
-    <span class="hero-subline">Scan. Save your code. Shop the brand.</span>
+    <span class="hero-subline">[FOUNDERS TO WRITE: one-line subheading.]</span>
   </div>
   <div class="scroll-hint"></div>
 </section>
@@ -197,7 +193,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
     <div class="section-header fade-in">
       <span class="eyebrow">Partner offers</span>
       <h2>Discount Codes</h2>
-      <span class="subtitle">Every partner code from the table, in one place. Tap a code to copy it.</span>
+      <span class="subtitle">[FOUNDERS TO WRITE: one line on the discount codes.]</span>
     </div>
     <div class="codes-grid">
       <div class="code-card fade-in">
@@ -240,7 +236,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
 <section class="products-section">
   <div class="inner">
     <div class="section-header fade-in">
-      <span class="eyebrow">The scents you smelled</span>
+      <span class="eyebrow">[FOUNDERS TO WRITE: eyebrow text]</span>
       <h2>Products</h2>
       <span class="subtitle">Pick a bottle to finish the purchase on the brand's own store.</span>
     </div>
@@ -378,11 +374,10 @@ img { display: block; max-width: 100%; border-radius: 0; }
     <div>
       <h4>Navigation</h4>
       <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="partnerships.html">Brand Partnerships</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#partnerships">Brand Partnerships</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
       </ul>
     </div>
     <div>
@@ -399,6 +394,16 @@ img { display: block; max-width: 100%; border-radius: 0; }
 <div class="toast" id="toast"></div>
 
 <script>
+// Menu toggle
+function toggleMenu() {
+  document.querySelector('.dropdown-menu').classList.toggle('open');
+  document.querySelector('.menu-overlay').classList.toggle('open');
+}
+function closeMenu() {
+  document.querySelector('.dropdown-menu').classList.remove('open');
+  document.querySelector('.menu-overlay').classList.remove('open');
+}
+
 let toastTimer;
 function copyCode(code) {
   if (navigator.clipboard) navigator.clipboard.writeText(code).catch(() => {});

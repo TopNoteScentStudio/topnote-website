@@ -23,6 +23,7 @@
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body { background: var(--deep); font-family: 'DM Sans', system-ui, sans-serif; color: var(--cream); -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
@@ -32,28 +33,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .wordmark { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--cream); line-height: 1; }
 .wordmark-bold { font-weight: 800; }
 .wordmark-light { font-weight: 300; }
-.nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cream); transition: color 140ms var(--ease-state); padding-bottom: 4px; border-bottom: 2px solid transparent; }
-.nav-links a:hover { color: var(--amber); }
-.nav-links a.active { border-bottom-color: var(--amber); }
-.nav-links a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
-.hamburger { display: none; flex-direction: column; gap: 6px; padding: 8px; }
+.nav-links { display: none; }
+.hamburger { display: flex; flex-direction: column; gap: 6px; padding: 8px; }
 .hamburger span { display: block; width: 24px; height: 1px; background: var(--cream); transition: transform 240ms var(--ease-state), opacity 240ms var(--ease-state); }
 
-/* MOBILE MENU */
-.mobile-menu { position: fixed; inset: 0; z-index: 100; background: var(--deep); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; transform: translateY(-100%); transition: transform 240ms var(--ease-state); }
-.mobile-menu.open { transform: translateY(0); }
-.mobile-menu a { font-family: 'Anybody', sans-serif; font-weight: 400; font-size: 28px; color: var(--cream); text-transform: uppercase; letter-spacing: 0.02em; transition: color 140ms var(--ease-state); }
-.mobile-menu a:hover { color: var(--amber); }
-.mobile-menu-close { position: absolute; top: 16px; right: 32px; font-size: 28px; color: var(--cream); background: none; border: none; cursor: pointer; padding: 8px; font-family: 'DM Sans', sans-serif; font-weight: 300; }
+/* DROPDOWN MENU */
+.menu-overlay { position: fixed; inset: 0; z-index: 90; display: none; }
+.menu-overlay.open { display: block; }
+.dropdown-menu { position: fixed; top: 64px; right: 32px; z-index: 100; background: var(--deep); border: 1px solid var(--mauve-40); padding: 16px 32px; display: flex; flex-direction: column; gap: 16px; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state); }
+.dropdown-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.dropdown-menu a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--cream); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); white-space: nowrap; }
+.dropdown-menu a:hover { color: var(--amber); }
 
 /* HERO */
 .hero { position: relative; height: 78vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.hero-media { position: absolute; inset: 0; }
-.hero-media video,
-.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 64%; filter: saturate(0.85); }
-.hero-media img { position: absolute; inset: 0; }
-.hero-overlay { position: absolute; inset: 0; background: var(--deep-70); z-index: 1; }
+.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center 55%; filter: saturate(0.85); }
+.hero-overlay { position: absolute; inset: 0; background: rgba(26, 21, 18, 0.75); z-index: 1; }
 .hero-content { position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; }
 .hero h1 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 135; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--cream); font-size: clamp(44px, 8vw, 88px); line-height: 1.05; }
 .hero-subline { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
@@ -83,11 +78,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .ghost-link:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
 
 /* CTA BAND */
-.cta-band { padding: 96px 32px; text-align: center; background: var(--amber); }
+.cta-band { padding: 96px 32px; text-align: center; background: var(--cream); }
 .cta-band h2 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 44px); color: var(--deep); margin-bottom: 16px; text-wrap: balance; }
 .cta-band .cta-body { font-size: 1rem; color: var(--deep); opacity: 0.8; margin-bottom: 40px; }
 .partner-label { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--deep); opacity: 0.7; margin-bottom: 16px; display: block; }
-.partner-logos { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; max-width: 1000px; margin: 0 auto; }
+.partner-logos { display: grid; grid-template-columns: repeat(3, 180px); gap: 16px; justify-content: center; max-width: 1000px; margin: 0 auto; }
 .partner-logo { width: 180px; height: 76px; border: 1px solid rgba(26, 21, 18, 0.35); display: grid; place-items: center; font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 13px; color: var(--deep); opacity: 0.75; padding: 0 12px; text-align: center; }
 
 /* FOOTER */
@@ -108,8 +103,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .nav { height: 56px; padding: 0 20px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
   .hero { height: 70vh; }
   .hero h1 { font-size: clamp(36px, 10vw, 44px); }
   .intro { padding: 64px 20px; }
@@ -125,7 +118,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (prefers-reduced-motion: reduce) {
   .fade-in { opacity: 1; transform: none; transition: none; }
   .scroll-hint { animation: none; opacity: 0.6; }
-  .mobile-menu { transition: none; }
+  .dropdown-menu { transition: none; }
 }
 </style>
 </head>
@@ -140,27 +133,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <li><a href="#">About Us</a></li>
     <li><a href="#">Contact Us</a></li>
   </ul>
-  <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.add('open')">
+  <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<div class="mobile-menu">
-  <button class="mobile-menu-close" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
-  <a href="index.html" onclick="this.parentElement.classList.remove('open')">Home</a>
-  <a href="#" onclick="this.parentElement.classList.remove('open')">Services</a>
-  <a href="#" onclick="this.parentElement.classList.remove('open')">Brand Partnerships</a>
-  <a href="#" onclick="this.parentElement.classList.remove('open')">About Us</a>
-  <a href="#" onclick="this.parentElement.classList.remove('open')">Contact Us</a>
+<div class="menu-overlay" onclick="closeMenu()"></div>
+<div class="dropdown-menu">
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#partnerships" onclick="closeMenu()">Brand Partnerships</a>
+  <a href="#contact" onclick="closeMenu()">Contact Us</a>
 </div>
 
-<section class="hero">
-  <div class="hero-media">
-    <img src="assets/photography/reaching-dim.jpg" alt="">
-    <video id="heroVideo" autoplay muted loop playsinline poster="assets/photography/reaching-dim.jpg">
-      <source src="assets/photography/motion-03.mp4" type="video/mp4">
-    </video>
-  </div>
+<section id="home" class="hero">
+  <div class="hero-bg" style="background-image: url(assets/photography/spray-portrait.jpg)"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1>Top Note<br>Scent Studio</h1>
@@ -170,10 +157,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </section>
 
 <section class="intro fade-in">
-  <p>[FOUNDERS TO WRITE: 2&ndash;3 sentences about what Top Note does. Warm, inviting tone.]</p>
+  <p>[FOUNDERS TO WRITE: 2&ndash;3 sentences about what Top Note does.]</p>
 </section>
 
-<section class="services">
+<section id="services" class="services">
   <div class="services-inner">
     <div class="section-header fade-in">
       <span class="eyebrow">[Eyebrow]</span>
@@ -203,7 +190,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   </div>
 </section>
 
-<section class="cta-band fade-in">
+<section id="partnerships" class="cta-band fade-in">
   <h2>[Partnership Headline]</h2>
   <p class="cta-body">[One sentence of filler copy.]</p>
   <span class="partner-label">Brands we've worked with</span>
@@ -217,7 +204,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   </div>
 </section>
 
-<footer class="footer">
+<footer id="contact" class="footer">
   <div class="footer-inner">
     <div>
       <div class="wordmark"><span class="wordmark-bold">TOP</span>&nbsp;<span class="wordmark-light">NOTE.</span></div>
@@ -226,11 +213,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div>
       <h4>Navigation</h4>
       <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Brand Partnerships</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#partnerships">Brand Partnerships</a></li>
+        <li><a href="#contact">Contact Us</a></li>
       </ul>
     </div>
     <div>
@@ -245,17 +231,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </footer>
 
 <script>
-// Hero video: slow to 0.45x, start at 40% of duration
-const video = document.getElementById('heroVideo');
-video.addEventListener('loadedmetadata', () => {
-  video.playbackRate = 0.45;
-  video.currentTime = video.duration * 0.4;
-});
-video.addEventListener('timeupdate', () => {
-  if (video.currentTime < video.duration * 0.4 && video.playbackRate === 0.45) {
-    video.currentTime = video.duration * 0.4;
-  }
-});
+// Menu toggle
+function toggleMenu() {
+  document.querySelector('.dropdown-menu').classList.toggle('open');
+  document.querySelector('.menu-overlay').classList.toggle('open');
+}
+function closeMenu() {
+  document.querySelector('.dropdown-menu').classList.remove('open');
+  document.querySelector('.menu-overlay').classList.remove('open');
+}
 
 // Scroll-in animation
 const observer = new IntersectionObserver((entries) => {
