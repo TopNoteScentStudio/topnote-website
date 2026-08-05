@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><script src="./ds-base.js"></script><style>body{margin:0;background:#1A1512}a{color:#C89B5C;text-decoration:none}a:hover{color:#E8DCC8}</style></helmet>
+<div style="background:#1A1512;font-family:'DM Sans',system-ui,sans-serif;min-height:100vh">
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.NavBar" items="{{ navItems }}" active="partners" sticky="{{ true }}" hint-size="100%,64px"></x-import>
+
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.Hero" lines="{{ heroLines }}" subline="Scan. Save your code. Shop the brand." image="assets/photography/reaching-dim.jpg" image-position="center" image-shift="{{ heroShift }}" overlay="{{ heroOverlay }}" height="62vh" align="center" scroll-hint="{{ true }}" hint-size="100%,440px"></x-import>
+
+<section style="background:#1A1512;padding:96px 32px 64px">
+<div style="max-width:1200px;margin:0 auto">
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.SectionHeader" eyebrow="Partner offers" title="Discount codes" subtitle="Every partner code from the table, in one place. Tap a code to copy it." hint-size="100%,140px"></x-import>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;margin-top:56px">
+<sc-for list="{{ brands }}" as="b" hint-placeholder-count="3">
+<div style="border:1px solid rgba(166,124,109,.4);padding:24px;display:grid;gap:20px;align-content:start">
+<div style="display:grid;gap:6px">
+<span style="font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:#A67C6D">{{ b.eyebrow }}</span>
+<h3 style="margin:0;font-family:'Anybody',sans-serif;font-variation-settings:'wdth' 120;font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:1.25rem;color:#E8DCC8">{{ b.name }}</h3>
+</div>
+<p style="margin:0;font-size:15px;line-height:1.6;color:#A67C6D;text-wrap:pretty">{{ b.note }}</p>
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.DiscountCode" code="{{ b.code }}" label="{{ b.codeLabel }}" on-copy="{{ onCopy }}" hint-size="100%,56px"></x-import>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section style="background:#1A1512;padding:32px 32px 96px">
+<div style="max-width:1200px;margin:0 auto">
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.SectionHeader" eyebrow="The scents you smelled" title="Products" subtitle="Pick a bottle to finish the purchase on the brand's own store." hint-size="100%,140px"></x-import>
+
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:40px">
+<sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+<button type="button" onClick="{{ f.onSelect }}" style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;padding:10px 18px;border-radius:0;cursor:pointer;transition:color 140ms cubic-bezier(.4,0,.2,1),background 140ms cubic-bezier(.4,0,.2,1);background:{{ f.bg }};color:{{ f.color }};border:1px solid {{ f.border }}">{{ f.label }}</button>
+</sc-for>
+</div>
+
+<div style="display:grid;gap:80px;margin-top:56px">
+<sc-for list="{{ shownBrands }}" as="b" hint-placeholder-count="2">
+<div style="display:grid;gap:32px">
+<div style="display:flex;flex-wrap:wrap;gap:16px 32px;align-items:baseline;justify-content:space-between;border-top:2px solid #C89B5C;padding-top:24px">
+<h3 style="margin:0;font-family:'Anybody',sans-serif;font-variation-settings:'wdth' 130;font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:2rem;line-height:1.1;color:#E8DCC8">{{ b.name }}</h3>
+<span style="font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:#A67C6D">{{ b.retailerLine }}</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:32px">
+<sc-for list="{{ b.products }}" as="p" hint-placeholder-count="3">
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.ProductCard" brand="{{ p.brand }}" name="{{ p.name }}" image="{{ p.image }}" code="{{ p.code }}" href="{{ p.href }}" cta-label="{{ p.ctaLabel }}" on-copy="{{ onCopy }}" hint-size="100%,420px"></x-import>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.CTABand" tone="amber" title="[Partnership Headline]" body="[FOUNDERS TO WRITE: one line inviting brands to put their range on the table.]" hint-size="100%,320px"><x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.Button" variant="secondary" tone="onAmber" as="a" href="MarketingPage.dc.html" hint-size="200px,52px">Become a partner</x-import></x-import>
+
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.Footer" tagline="[FOUNDERS TO WRITE: one-line tagline.]" links="{{ navItems }}" contact="{{ contactLinks }}" legal="© 2026 Top Note Scent Studio. All rights reserved." hint-size="100%,300px"></x-import>
+
+<sc-if value="{{ copied }}">
+<div style="position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:#1A1512;border:1px solid #C89B5C;color:#C89B5C;font-size:13px;text-transform:uppercase;letter-spacing:.14em;padding:14px 22px;z-index:60">{{ copiedMsg }}</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroOverlay&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.7,&quot;min&quot;:0.5,&quot;max&quot;:0.85,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroShift&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0,&quot;min&quot;:-20,&quot;max&quot;:20,&quot;step&quot;:2,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;eventSlug&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;event_slug&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tracking&quot;}}">
+class Component extends DCLogic {
+  state = { filter: 'all', copied: '' };
+
+  copy = (code) => {
+    if (navigator.clipboard) navigator.clipboard.writeText(code).catch(() => {});
+    this.setState({ copied: code });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ copied: '' }), 2400);
+  };
+
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  renderVals() {
+    const p = this.props;
+    const P = 'assets/photography/';
+    const slug = p.eventSlug ?? 'event_slug';
+    const utm = (brand, product) =>
+      '#?utm_source=topnote&utm_medium=qr&utm_campaign=' + slug +
+      '&utm_content=' + (brand + '_' + product).toLowerCase().replace(/[^a-z0-9]+/g, '_');
+
+    const raw = [
+      { id: 'b1', eyebrow: 'Partner brand', name: '[Partner Brand 01]', code: 'TOPNOTE15', codeLabel: '15% off',
+        retailerLine: 'Ships from [Brand Store]', note: '[One line on the range guests smelled at the table.]',
+        products: ['[Product Name 1]', '[Product Name 2]', '[Product Name 3]'],
+        images: ['liberty-bottle.jpg', 'bottle-held-light.jpg', 'reaching-window.jpg'] },
+      { id: 'b2', eyebrow: 'Partner brand', name: '[Partner Brand 02]', code: 'TABLE20', codeLabel: '20% off',
+        retailerLine: 'Ships from [Retail Partner]', note: '[One line on the range guests smelled at the table.]',
+        products: ['[Product Name 4]', '[Product Name 5]'],
+        images: ['bottle-held-dim.jpg', 'spray-portrait.jpg'] },
+      { id: 'b3', eyebrow: 'Partner brand', name: '[Partner Brand 03]', code: 'SETOF5', codeLabel: 'Discovery set',
+        retailerLine: 'Ships from [Brand Store]', note: '[One line on the range guests smelled at the table.]',
+        products: ['[Product Name 6]', '[Product Name 7]', '[Product Name 8]'],
+        images: ['reaching-dim.jpg', 'first-scent.jpg', 'liberty-bottle.jpg'] },
+    ];
+
+    const brands = raw.map((b) => ({
+      ...b,
+      products: b.products.map((name, i) => ({
+        brand: b.name, name, code: b.code, image: P + b.images[i % b.images.length],
+        href: utm(b.name, name), ctaLabel: 'Shop at ' + b.name,
+      })),
+    }));
+
+    const filter = this.state.filter;
+    const filters = [{ id: 'all', label: 'All brands' }, ...brands.map((b) => ({ id: b.id, label: b.name }))]
+      .map((f) => ({
+        label: f.label,
+        onSelect: () => this.setState({ filter: f.id }),
+        bg: filter === f.id ? '#C89B5C' : 'transparent',
+        color: filter === f.id ? '#1A1512' : '#E8DCC8',
+        border: filter === f.id ? '#C89B5C' : 'rgba(166,124,109,.4)',
+      }));
+
+    return {
+      navItems: [
+        { id: 'home', label: 'Home', href: 'MarketingPage.dc.html' },
+        { id: 'services', label: 'Services' },
+        { id: 'partners', label: 'Brand Partnerships', href: 'BrandPartnerships.dc.html' },
+        { id: 'about', label: 'About Us' },
+        { id: 'contact', label: 'Contact Us' },
+      ],
+      contactLinks: [{ label: '[FOUNDERS: email]' }, { label: 'Instagram' }],
+      heroLines: ['Brand', 'Partnerships'],
+      heroOverlay: p.heroOverlay ?? 0.7,
+      heroShift: p.heroShift ?? 0,
+      brands,
+      shownBrands: filter === 'all' ? brands : brands.filter((b) => b.id === filter),
+      filters,
+      onCopy: this.copy,
+      copied: !!this.state.copied,
+      copiedMsg: this.state.copied + ' copied',
+    };
+  }
+}
+</script>
+</body>
+</html>

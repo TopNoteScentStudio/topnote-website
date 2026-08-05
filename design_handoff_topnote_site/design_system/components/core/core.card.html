@@ -1,0 +1,21 @@
+<!-- @dsCard group="Components" viewport="700x400" name="Core — Buttons, Card, Header" subtitle="Primary / secondary / ghost, section header, both card tones" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script>document.write('<script src="../../_ds_bundle.js?v=' + Date.now() + '"><\/script>')</script><style>body{margin:0;padding:20px;background:var(--deep)}#root{display:block}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const { Button, Card, SectionHeader, Divider, Eyebrow } = window.TopNoteScentStudioDesignSystem_5e2582;
+function Demo(){return <div style={{display:"grid",gap:28}}>
+<div style={{display:"flex",gap:16,alignItems:"center",flexWrap:"wrap"}}>
+<Button>Get in touch</Button><Button variant="secondary">View services</Button><Button variant="ghost">Learn more</Button><Button disabled>Disabled</Button>
+</div>
+<div style={{display:"flex",gap:16,alignItems:"center"}}><Button size="sm">Small</Button><Button size="md">Medium</Button><Button size="lg">Large</Button></div>
+<Divider/>
+<SectionHeader eyebrow="What we do" title="Services" subtitle="Curated scent moments, built for the room they happen in."/>
+<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:24}}>
+<Card eyebrow="01" title="Event activations" footer={<Button variant="ghost">Learn more</Button>}>Guided discovery tables built around a partner's range.</Card>
+<div style={{background:"var(--cream)",padding:"0 20px 20px"}}><Card tone="onCream" eyebrow="02" title="Curation">The same card on a cream section: amber top rule, no box.</Card></div>
+</div></div>}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

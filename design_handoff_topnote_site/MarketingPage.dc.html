@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Marketing page" description="Top Note page shell: nav, full-bleed hero, cream intro, card grid, CTA band, footer." -->
+<helmet><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><script src="./ds-base.js"></script><style>body{margin:0;background:#1A1512}</style></helmet>
+<div style="background:#1A1512;font-family:'DM Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.NavBar" items="{{ navItems }}" active="home" sticky="{{ true }}" hint-size="100%,64px"></x-import>
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.Hero" lines="{{ heroLines }}" subline="Experiential scent discovery" image="{{ heroImage }}" video="{{ heroVideo }}" video-rate="{{ heroRate }}" video-start="{{ heroStart }}" video-crossfade="{{ heroCrossfade }}" image-position="{{ heroFraming }}" image-shift="{{ heroShift }}" overlay="{{ heroOverlay }}" height="78vh" scroll-hint="{{ true }}" hint-size="100%,600px"></x-import>
+<section style="background:#E8DCC8;padding:96px 32px">
+<p style="max-width:640px;margin:0 auto;text-align:center;font-size:1.25rem;line-height:1.6;color:#1A1512">[FOUNDERS TO WRITE: 2–3 sentences about what Top Note does. Warm, inviting tone.]</p>
+</section>
+<section style="background:#1A1512;padding:96px 32px">
+<div style="max-width:1200px;margin:0 auto">
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.SectionHeader" eyebrow="[Eyebrow]" title="Services" subtitle="[FOUNDERS TO WRITE: one line on the offering.]" hint-size="100%,140px"></x-import>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:64px">
+<sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.Card" eyebrow="{{ s.index }}" title="{{ s.title }}" hint-size="100%,200px"><div style="display:grid;gap:16px;justify-items:start"><p style="margin:0">[Service description — 1–2 sentences.]</p><x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.Button" variant="ghost" hint-size="120px,24px">Learn more</x-import></div></x-import>
+</sc-for>
+</div>
+</div>
+</section>
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.CTABand" tone="amber" title="[Partnership Headline]" body="[One sentence of filler copy.]" hint-size="100%,320px"><div style="display:grid;gap:24px;justify-items:center;width:100%;max-width:1000px"><span style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:#1A1512;opacity:.7">Brands we've worked with</span><div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center"><sc-for list="{{ partnerLogos }}" as="l" hint-placeholder-count="6"><div style="width:180px;height:76px;border:1px solid rgba(26,21,18,.35);display:grid;place-items:center;font-family:'Anybody',sans-serif;font-variation-settings:'wdth' 120;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:13px;color:#1A1512;opacity:.75;text-align:center;padding:0 12px">{{ l }}</div></sc-for></div></div></x-import>
+<x-import component-from-global-scope="TopNoteScentStudioDesignSystem_5e2582.Footer" tagline="[FOUNDERS TO WRITE: one-line tagline.]" links="{{ navItems }}" contact="{{ contactLinks }}" legal="© 2026 Top Note Scent Studio. All rights reserved." hint-size="100%,300px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroMedia&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;motion-03-slow&quot;,&quot;options&quot;:[&quot;photo&quot;,&quot;motion-01&quot;,&quot;motion-02&quot;,&quot;motion-03&quot;,&quot;motion-03-slow&quot;,&quot;motion-04&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroFraming&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroOverlay&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.7,&quot;min&quot;:0.5,&quot;max&quot;:0.85,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroShift&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:6,&quot;min&quot;:-20,&quot;max&quot;:20,&quot;step&quot;:2,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const P = 'assets/photography/';
+    const media = p.heroMedia ?? 'motion-03-slow';
+    // Per-clip framing and speed. The portrait clips are cropped hard by `cover`,
+    // so each one needs its own vertical anchor to keep its subject in frame.
+    const MEDIA = {
+      'motion-01': { file: 'motion-01', framing: 'center', rate: 1 },
+      'motion-02': { file: 'motion-02', framing: 'center', rate: 1 },
+      'motion-03': { file: 'motion-03', framing: 'center 64%', rate: 0.5 },  // spray — anchor low so the hand stays in frame
+      // Spray, last 3/5 of the clip, slowed.
+      'motion-03-slow': { file: 'motion-03', framing: 'center 64%', rate: 0.45, start: 0.4 },
+      'motion-04': { file: 'motion-04', framing: 'center 23%', rate: 0.5, crossfade: 1.2 }, // bottles on the rippled wall — anchored high so the bottle caps stay visible throughout
+    }[media] || { file: media, framing: 'center', rate: 1 };
+    return {
+      navItems: [
+        { id: 'home', label: 'Home' },
+        { id: 'services', label: 'Services' },
+        { id: 'partners', label: 'Brand Partnerships' },
+        { id: 'about', label: 'About Us' },
+        { id: 'contact', label: 'Contact Us' },
+      ],
+      contactLinks: [{ label: '[FOUNDERS: email]' }, { label: 'Instagram' }],
+      heroLines: ['Top Note', 'Scent Studio'],
+      heroOverlay: p.heroOverlay ?? 0.7,
+      // The shift exists to move the bottle in reaching-dim.jpg off the subline.
+      // The clips are low-res, so any extra upscale just softens them — never shift video.
+      heroShift: media === 'photo' ? (p.heroShift ?? 6) : 0,
+      heroImage: media === 'photo' ? P + 'reaching-dim.jpg' : undefined,
+      heroVideo: media === 'photo' ? undefined : P + MEDIA.file + '.mp4',
+      // Speed is a property of the clip, not a page setting — MEDIA is the only source.
+      heroRate: MEDIA.rate,
+      heroStart: MEDIA.start ?? 0,
+      heroCrossfade: MEDIA.crossfade ?? 0,
+      heroFraming: p.heroFraming || MEDIA.framing,
+      partnerLogos: [
+        '[Partner logo 01]', '[Partner logo 02]', '[Partner logo 03]',
+        '[Partner logo 04]', '[Partner logo 05]', '[Partner logo 06]',
+      ],
+      services: [
+        { index: '01', title: '[Service Name 1]' },
+        { index: '02', title: '[Service Name 2]' },
+        { index: '03', title: '[Service Name 3]' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

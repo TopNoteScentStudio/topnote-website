@@ -1,0 +1,13 @@
+:root{
+  --space-xs:0.25rem;
+  --space-sm:0.5rem;
+  --space-md:1rem;
+  --space-lg:2rem;
+  --space-xl:4rem;
+  --space-2xl:6rem;
+  --space-3xl:8rem;
+
+  --section-y:var(--space-2xl);
+  --section-y-mobile:var(--space-xl);
+  --gutter:1.5rem;
+}

@@ -1,0 +1,54 @@
+:root{
+  /* ---- Amber Dusk — base palette ---- */
+  --deep:#1A1512;
+  --amber:#C89B5C;
+  --terracotta:#8B4A3C;
+  --cream:#E8DCC8;
+  --mauve:#A67C6D;
+
+  /* ---- Derived / alpha ---- */
+  --deep-80:rgba(26,21,18,.8);
+  --deep-75:rgba(26,21,18,.75);
+  --deep-60:rgba(26,21,18,.6);
+  --deep-50:rgba(26,21,18,.5);
+  --cream-60:rgba(232,220,200,.6);
+  --cream-12:rgba(232,220,200,.12);
+  --amber-15:rgba(200,155,92,.15);
+  --amber-30:rgba(200,155,92,.3);
+  --mauve-40:rgba(166,124,109,.4);
+  --amber-hover:#B38A4F;      /* amber darkened 10% */
+  --terracotta-hover:#7A4034;
+
+  /* ---- Semantic surfaces ---- */
+  --surface-deep:var(--deep);
+  --surface-cream:var(--cream);
+  --surface-card-deep:transparent;
+  --surface-card-cream:transparent;
+  --overlay-hero:var(--deep-75);
+  --overlay-parallax:var(--deep-50);
+
+  /* ---- Semantic text ---- */
+  --text-on-deep:var(--cream);
+  --text-on-cream:var(--deep);
+  --text-muted-on-deep:var(--mauve);
+  --text-muted-on-cream:var(--mauve);
+  --text-accent:var(--amber);
+  --text-inverse:var(--deep);
+
+  /* ---- Lines ---- */
+  --border-hairline:1px solid var(--mauve);
+  --border-hairline-soft:1px solid var(--mauve-40);
+  --border-accent:2px solid var(--amber);
+  --divider-on-deep:var(--mauve-40);
+  --divider-on-cream:var(--mauve);
+
+  /* ---- Interactive ---- */
+  --action-primary-bg:var(--amber);
+  --action-primary-fg:var(--deep);
+  --action-primary-bg-hover:var(--amber-hover);
+  --action-secondary-border:var(--amber);
+  --action-secondary-fg:var(--amber);
+  --action-secondary-bg-hover:var(--amber-15);
+  --action-disabled-fg:var(--mauve);
+  --focus-ring:2px solid var(--amber);
+}

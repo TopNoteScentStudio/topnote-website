@@ -1,0 +1,14 @@
+:root{
+  --content-max:1200px; /* @kind spacing */
+  --measure:640px; /* @kind spacing */      /* centered prose max-width */
+  --nav-h:64px; /* @kind spacing */
+  --nav-h-mobile:56px; /* @kind spacing */
+  --grid-cols:12; /* @kind other */
+  --grid-cols-mobile:4; /* @kind other */
+
+  /* Sharp corners everywhere — deliberate. */
+  --radius:0px;
+
+  /* No shadow system. Depth comes from value contrast (deep vs cream) and hairlines. */
+  --shadow-none:none;
+}
