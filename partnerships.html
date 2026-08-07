@@ -7,125 +7,134 @@
 <title>Brand Partnerships — Top Note Scent Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Taruno Wide';
+  src: url('assets/fonts/TarunoWide-Medium.woff2') format('woff2'),
+       url('assets/fonts/TarunoWide-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --deep: #1A1512;
-  --cream: #E8DCC8;
-  --amber: #C89B5C;
-  --terracotta: #8B4A3C;
-  --mauve: #A67C6D;
-  --deep-70: rgba(26, 21, 18, 0.7);
-  --mauve-40: rgba(166, 124, 109, 0.4);
-  --amber-15: rgba(200, 155, 92, 0.15);
-  --amber-hover: #B38A4F;
+  --bg: #FAF5EC;
+  --text: #2A1C12;
+  --terracotta: #B5583A;
+  --burgundy: #6B1F2A;
+  --amber: #C1893C;
+  --sand: #E4C9A3;
+  --muted: #8B7B68;
+  --text-70: rgba(42, 28, 18, 0.7);
+  --muted-40: rgba(139, 123, 104, 0.4);
   --ease-state: cubic-bezier(.4, 0, .2, 1);
   --ease-entrance: cubic-bezier(.16, 1, .3, 1);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--deep); font-family: 'DM Sans', system-ui, sans-serif; color: var(--cream); -webkit-font-smoothing: antialiased; min-height: 100vh; }
-a { color: var(--amber); text-decoration: none; transition: color 140ms var(--ease-state); }
-a:hover { color: var(--cream); }
+body { background: var(--bg); font-family: 'DM Sans', system-ui, sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+a { color: var(--terracotta); text-decoration: none; transition: color 140ms var(--ease-state); }
+a:hover { color: var(--burgundy); }
 button { font-family: inherit; cursor: pointer; }
 img { display: block; max-width: 100%; border-radius: 0; }
 
 /* NAV */
-.nav { position: sticky; top: 0; z-index: 50; height: 64px; background: var(--deep); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
-.wordmark { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--cream); line-height: 1; }
-.wordmark-bold { font-weight: 800; }
-.wordmark-light { font-weight: 300; }
+.nav { position: sticky; top: 0; z-index: 50; height: 64px; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; border-bottom: 1px solid var(--muted-40); }
+.wordmark { display: block; height: 24px; }
+.wordmark img { height: 100%; width: auto; display: block; }
 .nav-links { display: none; }
 .hamburger { display: flex; flex-direction: column; gap: 6px; padding: 8px; background: none; border: none; }
-.hamburger span { display: block; width: 24px; height: 1px; background: var(--cream); }
+.hamburger span { display: block; width: 24px; height: 1px; background: var(--burgundy); }
 
 /* DROPDOWN MENU */
 .menu-overlay { position: fixed; inset: 0; z-index: 90; display: none; }
 .menu-overlay.open { display: block; }
-.dropdown-menu { position: fixed; top: 64px; right: 32px; z-index: 100; background: var(--deep); border: 1px solid var(--mauve-40); padding: 16px 32px; display: flex; flex-direction: column; gap: 16px; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state); }
+.dropdown-menu { position: fixed; top: 64px; right: 32px; z-index: 100; background: var(--bg); border: 1px solid var(--muted-40); padding: 16px 32px; display: flex; flex-direction: column; gap: 16px; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state); }
 .dropdown-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.dropdown-menu a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--cream); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); white-space: nowrap; text-decoration: none; }
-.dropdown-menu a:hover { color: var(--amber); }
+.dropdown-menu a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--burgundy); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); white-space: nowrap; text-decoration: none; }
+.dropdown-menu a:hover { color: var(--terracotta); }
 
 /* HERO */
 .hero { position: relative; height: 62vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: saturate(0.85); }
-.hero-overlay { position: absolute; inset: 0; background: var(--deep-70); z-index: 1; }
+.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center 48%; filter: saturate(0.85); }
+.hero-overlay { position: absolute; inset: 0; background: rgba(58, 29, 25, 0.75); z-index: 1; }
 .hero-content { position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; }
-.hero h1 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 135; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--cream); font-size: clamp(40px, 7vw, 80px); line-height: 1.05; }
-.hero-subline { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
-.scroll-hint { position: absolute; bottom: 32px; left: 50%; width: 1px; height: 40px; background: var(--mauve); z-index: 2; animation: pulse 2.4s ease-in-out infinite; }
+.hero h1 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: var(--bg); font-size: clamp(40px, 7vw, 80px); line-height: 1.05; }
+.hero-subline { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: #E2BAA6; }
+.scroll-hint { position: absolute; bottom: 32px; left: 50%; width: 1px; height: 40px; background: #E2BAA6; z-index: 2; animation: pulse 2.4s ease-in-out infinite; }
 @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
 /* SECTION HEADER */
 .section-header { margin-bottom: 56px; text-align: center; }
-.section-header .eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); margin-bottom: 16px; display: block; }
-.section-header h2 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 48px); color: var(--cream); margin-bottom: 16px; text-wrap: balance; }
-.section-header .subtitle { font-size: 1rem; color: var(--mauve); line-height: 1.5; }
+.section-header .eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta); margin-bottom: 16px; display: block; }
+.section-header h2 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 48px); color: var(--text); margin-bottom: 16px; text-wrap: balance; }
+.section-header .subtitle { font-size: 1rem; color: var(--muted); line-height: 1.5; }
 
 /* DISCOUNT CODES */
 .codes-section { padding: 96px 32px 64px; }
 .codes-section .inner { max-width: 1200px; margin: 0 auto; }
 .codes-grid { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; }
 .code-card { width: 280px; flex-shrink: 0; }
-.code-card { border: 1px solid var(--mauve-40); padding: 24px; display: grid; gap: 20px; align-content: start; }
-.code-card .card-eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
-.code-card h3 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.25rem; color: var(--cream); margin-top: 6px; }
-.code-card .note { font-size: 15px; line-height: 1.6; color: var(--mauve); text-wrap: pretty; }
+.code-card { border: 1px solid var(--muted-40); padding: 24px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-content: start; }
+.code-card .card-eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta); }
+.code-card h3 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.25rem; color: var(--text); margin-top: 6px; }
+.code-card .note { font-size: 15px; line-height: 1.6; color: var(--muted); text-wrap: pretty; }
 .discount-code { display: flex; align-items: center; justify-content: space-between; gap: 16px; border: 1px solid var(--terracotta); padding: 12px 16px; cursor: pointer; transition: background 140ms var(--ease-state); }
-.discount-code:hover { background: rgba(139, 74, 60, 0.15); }
-.discount-code .code-text { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; font-size: 16px; letter-spacing: 0.06em; color: var(--terracotta); white-space: nowrap; }
-.discount-code .code-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); white-space: nowrap; text-align: right; flex-shrink: 0; }
+.discount-code:hover { background: rgba(181, 88, 58, 0.1); }
+.discount-code .code-text { font-family: 'Taruno Wide', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0.04em; color: var(--terracotta); }
+.discount-code .code-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); text-align: right; }
 
 /* PRODUCTS */
 .products-section { padding: 32px 32px 96px; }
 .products-section .inner { max-width: 1200px; margin: 0 auto; }
 .filter-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; margin-bottom: 56px; justify-content: center; }
-.filter-chip { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 18px; border-radius: 0; border: 1px solid var(--mauve-40); background: transparent; color: var(--cream); cursor: pointer; transition: color 140ms var(--ease-state), background 140ms var(--ease-state), border-color 140ms var(--ease-state); }
+.filter-chip { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 18px; border-radius: 0; border: 1px solid var(--muted-40); background: transparent; color: var(--text); cursor: pointer; transition: color 140ms var(--ease-state), background 140ms var(--ease-state), border-color 140ms var(--ease-state); }
 .filter-chip:hover { border-color: var(--terracotta); }
-.filter-chip.active { background: var(--terracotta); color: var(--cream); border-color: var(--terracotta); }
+.filter-chip.active { background: var(--terracotta); color: var(--bg); border-color: var(--terracotta); }
 .filter-chip:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 
 .brand-groups { display: grid; gap: 96px; text-align: center; }
-.brand-group-header { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: baseline; justify-content: center; border-top: 2px solid var(--terracotta); padding-top: 40px; margin-bottom: 48px; text-align: center; }
-.brand-group-header h3 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: 2rem; line-height: 1.1; color: var(--cream); }
-.brand-group-header .retailer { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
+.brand-group-header { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: baseline; justify-content: center; border-top: 2px solid var(--burgundy); padding-top: 40px; margin-bottom: 48px; text-align: center; }
+.brand-group-header h3 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 2rem; line-height: 1.1; color: var(--text); }
+.brand-group-header .retailer { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
 .product-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
 .product-card { width: 280px; flex-shrink: 0; }
 
 /* PRODUCT CARD */
 .product-card { display: grid; gap: 16px; }
 .product-img { aspect-ratio: 1; background-size: cover; background-position: center; filter: saturate(0.85); }
-.product-brand { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); }
-.product-name { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.1rem; color: var(--cream); }
+.product-brand { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
+.product-name { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.1rem; color: var(--text); }
 .product-code { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--terracotta); padding: 10px 14px; cursor: pointer; transition: background 140ms var(--ease-state); }
-.product-code:hover { background: rgba(139, 74, 60, 0.15); }
-.product-code .code-text { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 120; font-weight: 700; font-size: 14px; letter-spacing: 0.06em; color: var(--terracotta); white-space: nowrap; }
-.product-code .code-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); white-space: nowrap; flex-shrink: 0; }
-.product-cta { display: block; text-align: center; padding: 14px 24px; background: var(--terracotta); color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); }
-.product-cta:hover { background: #6E3A30; color: var(--cream); }
+.product-code:hover { background: rgba(181, 88, 58, 0.1); }
+.product-code .code-text { font-family: 'Taruno Wide', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0.06em; color: var(--terracotta); white-space: nowrap; }
+.product-code .code-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+.product-cta { display: block; text-align: center; padding: 14px 24px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); }
+.product-cta:hover { background: var(--burgundy); color: var(--bg); }
 .product-cta:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
 
 /* CTA BAND */
-.cta-band { padding: 96px 32px; text-align: center; background: var(--cream); }
-.cta-band h2 { font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 130; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 44px); color: var(--deep); margin-bottom: 16px; text-wrap: balance; }
-.cta-band .cta-body { font-size: 1rem; color: var(--deep); opacity: 0.8; margin-bottom: 32px; }
-.btn-secondary { display: inline-block; padding: 16px 40px; border: 1px solid var(--deep); color: var(--deep); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; background: transparent; transition: background 140ms var(--ease-state); cursor: pointer; }
-.btn-secondary:hover { background: rgba(26, 21, 18, 0.1); color: var(--deep); }
+.cta-band { padding: 96px 32px; text-align: center; background: #E4C9A3; }
+.cta-band h2 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 44px); color: var(--text); margin-bottom: 16px; text-wrap: balance; }
+.cta-band .cta-body { font-size: 1rem; color: var(--text); opacity: 0.8; margin-bottom: 32px; }
+.cta-btn { display: inline-block; padding: 16px 40px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); cursor: pointer; }
+.cta-btn:hover { background: var(--burgundy); }
 
 /* FOOTER */
-.footer { background: var(--deep); padding: 64px 32px; border-top: 1px solid var(--mauve-40); }
+.footer { background: var(--text); padding: 64px 32px; border-top: 1px solid var(--muted-40); }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; }
+.footer .wordmark img { filter: brightness(0) invert(1); }
 .footer .wordmark { margin-bottom: 16px; }
-.footer-tagline { font-size: 14px; color: var(--mauve); line-height: 1.5; }
-.footer h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mauve); margin-bottom: 16px; }
+.footer-tagline { font-size: 14px; color: var(--sand); line-height: 1.5; }
+.footer h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--sand); margin-bottom: 16px; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { font-size: 14px; color: var(--cream); text-decoration: none; transition: color 140ms var(--ease-state); }
-.footer-links a:hover { color: var(--amber); }
-.footer-legal { grid-column: 1 / -1; font-size: 13px; color: var(--mauve); padding-top: 32px; border-top: 1px solid var(--mauve-40); }
+.footer-links a { font-size: 14px; color: var(--bg); text-decoration: none; transition: color 140ms var(--ease-state); }
+.footer-links a:hover { color: var(--terracotta); }
+.footer-legal { grid-column: 1 / -1; font-size: 13px; color: var(--sand); padding-top: 32px; border-top: 1px solid rgba(139, 123, 104, 0.3); }
 
 /* TOAST */
-.toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%) translateY(80px); background: var(--deep); border: 1px solid var(--terracotta); color: var(--terracotta); font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; padding: 14px 22px; z-index: 60; opacity: 0; transition: transform 240ms var(--ease-state), opacity 240ms var(--ease-state); pointer-events: none; white-space: nowrap; }
+.toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%) translateY(80px); background: var(--bg); border: 1px solid var(--terracotta); color: var(--terracotta); font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; padding: 14px 22px; z-index: 60; opacity: 0; transition: transform 240ms var(--ease-state), opacity 240ms var(--ease-state); pointer-events: none; white-space: nowrap; }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
 /* SCROLL ANIMATIONS */
@@ -157,7 +166,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
 <body>
 
 <nav class="nav">
-  <div class="wordmark"><span class="wordmark-bold">TOP</span>&nbsp;<span class="wordmark-light">NOTE.</span></div>
+  <div class="wordmark"><img src="assets/topnotelogo-burgundy.png" alt="Top Note"></div>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="#">Services</a></li>
@@ -362,13 +371,13 @@ img { display: block; max-width: 100%; border-radius: 0; }
 <section class="cta-band fade-in">
   <h2>[Partnership Headline]</h2>
   <p class="cta-body">[FOUNDERS TO WRITE: one line inviting brands to put their range on the table.]</p>
-  <a href="#" class="btn-secondary">Become a partner</a>
+  <a href="#" class="cta-btn">Become a partner</a>
 </section>
 
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="wordmark"><span class="wordmark-bold">TOP</span>&nbsp;<span class="wordmark-light">NOTE.</span></div>
+      <div class="wordmark"><img src="assets/topnotelogo-burgundy.png" alt="Top Note"></div>
       <p class="footer-tagline">[FOUNDERS TO WRITE: one-line tagline.]</p>
     </div>
     <div>
@@ -394,7 +403,6 @@ img { display: block; max-width: 100%; border-radius: 0; }
 <div class="toast" id="toast"></div>
 
 <script>
-// Menu toggle
 function toggleMenu() {
   document.querySelector('.dropdown-menu').classList.toggle('open');
   document.querySelector('.menu-overlay').classList.toggle('open');

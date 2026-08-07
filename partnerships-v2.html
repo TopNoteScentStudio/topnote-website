@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Brand Partnerships — Top Note Scent Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Taruno Wide';
+  src: url('assets/fonts/TarunoWide-Medium.woff2') format('woff2'),
+       url('assets/fonts/TarunoWide-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #FAF5EC;
+  --text: #2A1C12;
+  --terracotta: #B5583A;
+  --burgundy: #6B1F2A;
+  --amber: #C1893C;
+  --sand: #E4C9A3;
+  --muted: #8B7B68;
+  --text-70: rgba(42, 28, 18, 0.7);
+  --muted-40: rgba(139, 123, 104, 0.4);
+  --ease-state: cubic-bezier(.4, 0, .2, 1);
+  --ease-entrance: cubic-bezier(.16, 1, .3, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); font-family: 'DM Sans', system-ui, sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+a { color: var(--terracotta); text-decoration: none; transition: color 140ms var(--ease-state); }
+a:hover { color: var(--burgundy); }
+button { font-family: inherit; cursor: pointer; }
+img { display: block; max-width: 100%; border-radius: 0; }
+
+/* NAV */
+.nav { position: sticky; top: 0; z-index: 50; height: 64px; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; border-bottom: 1px solid var(--muted-40); }
+.wordmark { display: block; height: 24px; }
+.wordmark img { height: 100%; width: auto; display: block; }
+.nav-links { display: none; }
+.hamburger { display: flex; flex-direction: column; gap: 6px; padding: 8px; background: none; border: none; }
+.hamburger span { display: block; width: 24px; height: 1px; background: var(--burgundy); }
+
+/* DROPDOWN MENU */
+.menu-overlay { position: fixed; inset: 0; z-index: 90; display: none; }
+.menu-overlay.open { display: block; }
+.dropdown-menu { position: fixed; top: 64px; right: 32px; z-index: 100; background: var(--bg); border: 1px solid var(--muted-40); padding: 16px 32px; display: flex; flex-direction: column; gap: 16px; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state); }
+.dropdown-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.dropdown-menu a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--burgundy); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); white-space: nowrap; text-decoration: none; }
+.dropdown-menu a:hover { color: var(--terracotta); }
+
+/* HERO */
+.hero { position: relative; height: 62vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center 48%; filter: saturate(0.85); }
+.hero-overlay { position: absolute; inset: 0; background: rgba(58, 29, 25, 0.75); z-index: 1; }
+.hero-content { position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.hero h1 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: var(--bg); font-size: clamp(40px, 7vw, 80px); line-height: 1.05; }
+.hero-subline { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: #E2BAA6; }
+.scroll-hint { position: absolute; bottom: 32px; left: 50%; width: 1px; height: 40px; background: #E2BAA6; z-index: 2; animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+/* SECTION HEADER */
+.section-header { margin-bottom: 40px; text-align: center; }
+.section-header .eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta); margin-bottom: 16px; display: block; }
+.section-header h2 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 48px); color: var(--text); margin-bottom: 16px; text-wrap: balance; }
+.section-header .subtitle { font-size: 1rem; color: var(--burgundy); line-height: 1.5; }
+
+/* BRAND FILTERS */
+.filters-section { padding: 80px 32px 0; }
+.filters-section .inner { max-width: 1200px; margin: 0 auto; }
+.brand-filters { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
+.brand-filter { display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; border: none; background: none; padding: 0; transition: opacity 180ms var(--ease-state); }
+.brand-filter:hover { opacity: 0.8; }
+.brand-filter.active .filter-img { border-color: var(--terracotta); }
+.brand-filter.active .filter-label { color: var(--terracotta); }
+.filter-img { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 2px solid var(--muted-40); transition: border-color 180ms var(--ease-state); }
+.filter-img img { width: 100%; height: 100%; object-fit: cover; }
+.filter-label { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); transition: color 180ms var(--ease-state); }
+
+/* PRODUCT GRID */
+.products-section { padding: 64px 32px 96px; }
+.products-section .inner { max-width: 1200px; margin: 0 auto; }
+.product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+
+/* PRODUCT CARD */
+.product-card { display: flex; flex-direction: column; }
+.product-card-img { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; }
+.product-card-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85); transition: transform 400ms var(--ease-state); }
+.product-card-img:hover img { transform: scale(1.03); }
+.product-hover-overlay { position: absolute; inset: 0; background: rgba(42, 28, 18, 0.82); display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; transition: opacity 280ms var(--ease-state); }
+.product-card-img:hover .product-hover-overlay { opacity: 1; }
+.product-hover-overlay p { font-size: 14px; line-height: 1.65; color: var(--bg); text-align: center; }
+.product-info { padding: 16px 0 8px; }
+.product-brand-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terracotta); margin-bottom: 6px; }
+.product-title { font-family: 'Taruno Wide', sans-serif; font-weight: 500; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+.product-price { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--burgundy); }
+
+/* CTA BAND */
+.cta-band { padding: 96px 32px; text-align: center; background: #E4C9A3; }
+.cta-band h2 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 44px); color: var(--text); margin-bottom: 16px; text-wrap: balance; }
+.cta-band .cta-body { font-size: 1rem; color: var(--text); opacity: 0.8; margin-bottom: 32px; }
+.cta-btn { display: inline-block; padding: 16px 40px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); cursor: pointer; }
+.cta-btn:hover { background: var(--burgundy); color: var(--bg); }
+
+/* FOOTER */
+.footer { background: var(--text); padding: 64px 32px; border-top: 1px solid var(--muted-40); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; }
+.footer .wordmark img { filter: brightness(0) invert(1); }
+.footer .wordmark { margin-bottom: 16px; }
+.footer-tagline { font-size: 14px; color: var(--sand); line-height: 1.5; }
+.footer h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--sand); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: var(--bg); text-decoration: none; transition: color 140ms var(--ease-state); }
+.footer-links a:hover { color: var(--terracotta); }
+.footer-legal { grid-column: 1 / -1; font-size: 13px; color: var(--sand); padding-top: 32px; border-top: 1px solid rgba(139, 123, 104, 0.3); }
+
+/* TOAST */
+.toast { position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%) translateY(80px); background: var(--bg); border: 1px solid var(--terracotta); color: var(--terracotta); font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; padding: 14px 22px; z-index: 60; opacity: 0; transition: transform 240ms var(--ease-state), opacity 240ms var(--ease-state); pointer-events: none; white-space: nowrap; }
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* SCROLL ANIMATIONS */
+.fade-in { opacity: 0; transform: translateY(16px); transition: opacity 520ms var(--ease-entrance), transform 520ms var(--ease-entrance); }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav { height: 56px; padding: 0 20px; }
+  .hero { height: 55vh; }
+  .hero h1 { font-size: clamp(32px, 9vw, 40px); }
+  .filters-section { padding: 64px 20px 0; }
+  .brand-filters { gap: 16px; }
+  .filter-img { width: 72px; height: 72px; }
+  .filter-label { font-size: 11px; }
+  .products-section { padding: 48px 20px 64px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .cta-band { padding: 64px 20px; }
+  .footer { padding: 48px 20px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  .scroll-hint { animation: none; opacity: 0.6; }
+  .toast { transition: none; }
+  .product-card-img img { transition: none; }
+  .product-hover-overlay { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wordmark"><img src="assets/topnotelogo-burgundy.png" alt="Top Note"></div>
+  <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="menu-overlay" onclick="closeMenu()"></div>
+<div class="dropdown-menu">
+  <a href="index.html#home" onclick="closeMenu()">Home</a>
+  <a href="index.html#services" onclick="closeMenu()">Services</a>
+  <a href="index.html#partnerships" onclick="closeMenu()">Brand Partnerships</a>
+  <a href="index.html#contact" onclick="closeMenu()">Contact Us</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg" style="background-image: url(assets/photography/reaching-dim.jpg)"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Brand<br>Partnerships</h1>
+    <span class="hero-subline">[FOUNDERS TO WRITE: one-line subheading.]</span>
+  </div>
+  <div class="scroll-hint"></div>
+</section>
+
+<section class="filters-section">
+  <div class="inner">
+    <div class="section-header fade-in">
+      <span class="eyebrow">Shop by brand</span>
+      <h2>Our Partners</h2>
+      <span class="subtitle">[FOUNDERS TO WRITE: one line on the partner brands.]</span>
+    </div>
+
+    <div class="brand-filters fade-in">
+      <button class="brand-filter active" data-filter="all">
+        <div class="filter-img"><img src="assets/photography/spray-portrait.jpg" alt="All brands"></div>
+        <span class="filter-label">All</span>
+      </button>
+      <button class="brand-filter" data-filter="b1">
+        <div class="filter-img"><img src="assets/photography/liberty-bottle.jpg" alt="Partner Brand 01"></div>
+        <span class="filter-label">[Brand 01]</span>
+      </button>
+      <button class="brand-filter" data-filter="b2">
+        <div class="filter-img"><img src="assets/photography/bottle-held-dim.jpg" alt="Partner Brand 02"></div>
+        <span class="filter-label">[Brand 02]</span>
+      </button>
+      <button class="brand-filter" data-filter="b3">
+        <div class="filter-img"><img src="assets/photography/first-scent.jpg" alt="Partner Brand 03"></div>
+        <span class="filter-label">[Brand 03]</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="products-section">
+  <div class="inner">
+    <div class="product-grid">
+
+      <div class="product-card fade-in" data-brand="b1">
+        <div class="product-card-img">
+          <img src="assets/photography/liberty-bottle.jpg" alt="Product 1">
+          <div class="product-hover-overlay">
+            <p>[Description of the fragrance. Include characteristics of the fragrance as described by the brand.]</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand-label">[Partner Brand 01]</div>
+          <div class="product-title">[Product Name 1]</div>
+          <div class="product-price">[Price]</div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-brand="b1">
+        <div class="product-card-img">
+          <img src="assets/photography/bottle-held-light.jpg" alt="Product 2">
+          <div class="product-hover-overlay">
+            <p>[Description of the fragrance. Include characteristics of the fragrance as described by the brand.]</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand-label">[Partner Brand 01]</div>
+          <div class="product-title">[Product Name 2]</div>
+          <div class="product-price">[Price]</div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-brand="b1">
+        <div class="product-card-img">
+          <img src="assets/photography/reaching-window.jpg" alt="Product 3">
+          <div class="product-hover-overlay">
+            <p>[Description of the fragrance. Include characteristics of the fragrance as described by the brand.]</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand-label">[Partner Brand 01]</div>
+          <div class="product-title">[Product Name 3]</div>
+          <div class="product-price">[Price]</div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-brand="b2">
+        <div class="product-card-img">
+          <img src="assets/photography/bottle-held-dim.jpg" alt="Product 4">
+          <div class="product-hover-overlay">
+            <p>[Description of the fragrance. Include characteristics of the fragrance as described by the brand.]</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand-label">[Partner Brand 02]</div>
+          <div class="product-title">[Product Name 4]</div>
+          <div class="product-price">[Price]</div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-brand="b2">
+        <div class="product-card-img">
+          <img src="assets/photography/spray-portrait.jpg" alt="Product 5">
+          <div class="product-hover-overlay">
+            <p>[Description of the fragrance. Include characteristics of the fragrance as described by the brand.]</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand-label">[Partner Brand 02]</div>
+          <div class="product-title">[Product Name 5]</div>
+          <div class="product-price">[Price]</div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-brand="b2">
+        <div class="product-card-img">
+          <img src="assets/photography/reaching-dim.jpg" alt="Product 6">
+          <div class="product-hover-overlay">
+            <p>[Description of the fragrance. Include characteristics of the fragrance as described by the brand.]</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand-label">[Partner Brand 02]</div>
+          <div class="product-title">[Product Name 6]</div>
+          <div class="product-price">[Price]</div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-brand="b3">
+        <div class="product-card-img">
+          <img src="assets/photography/first-scent.jpg" alt="Product 7">
+          <div class="product-hover-overlay">
+            <p>[Description of the fragrance. Include characteristics of the fragrance as described by the brand.]</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand-label">[Partner Brand 03]</div>
+          <div class="product-title">[Product Name 7]</div>
+          <div class="product-price">[Price]</div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-brand="b3">
+        <div class="product-card-img">
+          <img src="assets/photography/liberty-bottle.jpg" alt="Product 8">
+          <div class="product-hover-overlay">
+            <p>[Description of the fragrance. Include characteristics of the fragrance as described by the brand.]</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand-label">[Partner Brand 03]</div>
+          <div class="product-title">[Product Name 8]</div>
+          <div class="product-price">[Price]</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-band fade-in">
+  <h2>[Partnership Headline]</h2>
+  <p class="cta-body">[FOUNDERS TO WRITE: one line inviting brands to put their range on the table.]</p>
+  <a href="#" class="cta-btn">Become a partner</a>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="wordmark"><img src="assets/topnotelogo-burgundy.png" alt="Top Note"></div>
+      <p class="footer-tagline">[FOUNDERS TO WRITE: one-line tagline.]</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#partnerships">Brand Partnerships</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="#">[FOUNDERS: email]</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+    <p class="footer-legal">&copy; 2026 Top Note Scent Studio. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function toggleMenu() {
+  document.querySelector('.dropdown-menu').classList.toggle('open');
+  document.querySelector('.menu-overlay').classList.toggle('open');
+}
+function closeMenu() {
+  document.querySelector('.dropdown-menu').classList.remove('open');
+  document.querySelector('.menu-overlay').classList.remove('open');
+}
+
+document.querySelectorAll('.brand-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.brand-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.brand === filter) ? '' : 'none';
+    });
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
