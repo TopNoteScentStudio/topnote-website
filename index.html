@@ -352,6 +352,10 @@ window.addEventListener('scroll', () => {
     heroImg2.classList.remove('active');
     heroTextOverlay.classList.remove('active');
     heroShowingSecond = false;
+  } else if (window.scrollY <= 50 && !heroShowingSecond) {
+    heroImg2.classList.add('active');
+    heroTextOverlay.classList.add('active');
+    heroShowingSecond = true;
   }
 }, { passive: true });
 
