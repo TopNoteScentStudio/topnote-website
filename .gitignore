@@ -4,3 +4,6 @@
 *~
 .env
 node_modules/
+
+# Logo files (temporary — pending licensing review)
+assets/topnotelogo*.png

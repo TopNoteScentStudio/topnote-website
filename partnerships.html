@@ -5,19 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Brand Partnerships — Top Note Scent Studio</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH4JZ6T14"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CSH4JZ6T14');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Unbounded:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-@font-face {
-  font-family: 'Taruno Wide';
-  src: url('assets/fonts/TarunoWide-Medium.woff2') format('woff2'),
-       url('assets/fonts/TarunoWide-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --bg: #FAF5EC;
   --text: #2A1C12;
@@ -41,18 +39,19 @@ img { display: block; max-width: 100%; border-radius: 0; }
 
 /* NAV */
 .nav { position: sticky; top: 0; z-index: 50; height: 64px; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; border-bottom: 1px solid var(--muted-40); }
-.wordmark { display: block; height: 24px; }
-.wordmark img { height: 100%; width: auto; display: block; }
-.nav-links { display: none; }
-.hamburger { display: flex; flex-direction: column; gap: 6px; padding: 8px; background: none; border: none; }
-.hamburger span { display: block; width: 24px; height: 1px; background: var(--burgundy); }
+.wordmark { display: block; font-family: 'Unbounded', sans-serif; font-weight: 500; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); text-decoration: none; line-height: 1; }
+.nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
+.nav-links a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 13px; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); text-decoration: none; }
+.nav-links a:hover { color: var(--terracotta); }
+.hamburger { display: none; flex-direction: column; gap: 6px; padding: 8px; background: none; border: none; }
+.hamburger span { display: block; width: 24px; height: 1px; background: var(--text); }
 
 /* DROPDOWN MENU */
 .menu-overlay { position: fixed; inset: 0; z-index: 90; display: none; }
 .menu-overlay.open { display: block; }
-.dropdown-menu { position: fixed; top: 64px; right: 32px; z-index: 100; background: var(--bg); border: 1px solid var(--muted-40); padding: 16px 32px; display: flex; flex-direction: column; gap: 16px; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state); }
+.dropdown-menu { position: fixed; top: 56px; right: 20px; z-index: 100; background: var(--bg); border: 1px solid var(--muted-40); padding: 16px 32px; display: none; flex-direction: column; gap: 16px; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state); }
 .dropdown-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.dropdown-menu a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--burgundy); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); white-space: nowrap; text-decoration: none; }
+.dropdown-menu a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); white-space: nowrap; text-decoration: none; }
 .dropdown-menu a:hover { color: var(--terracotta); }
 
 /* HERO */
@@ -60,7 +59,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
 .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center 48%; filter: saturate(0.85); }
 .hero-overlay { position: absolute; inset: 0; background: rgba(58, 29, 25, 0.75); z-index: 1; }
 .hero-content { position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 0 20px; }
-.hero h1 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: var(--bg); font-size: clamp(40px, 7vw, 80px); line-height: 1.05; }
+.hero h1 { font-family: 'Unbounded', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; color: var(--bg); font-size: clamp(40px, 7vw, 80px); line-height: 1.05; }
 .hero-subline { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: #E2BAA6; }
 .scroll-hint { position: absolute; bottom: 32px; left: 50%; width: 1px; height: 40px; background: #E2BAA6; z-index: 2; animation: pulse 2.4s ease-in-out infinite; }
 @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
@@ -68,7 +67,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
 /* SECTION HEADER */
 .section-header { margin-bottom: 56px; text-align: center; }
 .section-header .eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta); margin-bottom: 16px; display: block; }
-.section-header h2 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 48px); color: var(--text); margin-bottom: 16px; text-wrap: balance; }
+.section-header h2 { font-family: 'Unbounded', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 48px); color: var(--text); margin-bottom: 16px; text-wrap: balance; }
 .section-header .subtitle { font-size: 1rem; color: var(--muted); line-height: 1.5; }
 
 /* DISCOUNT CODES */
@@ -78,11 +77,11 @@ img { display: block; max-width: 100%; border-radius: 0; }
 .code-card { width: 280px; flex-shrink: 0; }
 .code-card { border: 1px solid var(--muted-40); padding: 24px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-content: start; }
 .code-card .card-eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta); }
-.code-card h3 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.25rem; color: var(--text); margin-top: 6px; }
+.code-card h3 { font-family: 'Unbounded', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.25rem; color: var(--text); margin-top: 6px; }
 .code-card .note { font-size: 15px; line-height: 1.6; color: var(--muted); text-wrap: pretty; }
 .discount-code { display: flex; align-items: center; justify-content: space-between; gap: 16px; border: 1px solid var(--terracotta); padding: 12px 16px; cursor: pointer; transition: background 140ms var(--ease-state); }
 .discount-code:hover { background: rgba(181, 88, 58, 0.1); }
-.discount-code .code-text { font-family: 'Taruno Wide', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0.04em; color: var(--terracotta); }
+.discount-code .code-text { font-family: 'Unbounded', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0.04em; color: var(--terracotta); }
 .discount-code .code-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); text-align: right; }
 
 /* PRODUCTS */
@@ -96,7 +95,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
 
 .brand-groups { display: grid; gap: 96px; text-align: center; }
 .brand-group-header { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: baseline; justify-content: center; border-top: 2px solid var(--burgundy); padding-top: 40px; margin-bottom: 48px; text-align: center; }
-.brand-group-header h3 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 2rem; line-height: 1.1; color: var(--text); }
+.brand-group-header h3 { font-family: 'Unbounded', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 2rem; line-height: 1.1; color: var(--text); }
 .brand-group-header .retailer { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
 .product-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
 .product-card { width: 280px; flex-shrink: 0; }
@@ -105,10 +104,10 @@ img { display: block; max-width: 100%; border-radius: 0; }
 .product-card { display: grid; gap: 16px; }
 .product-img { aspect-ratio: 1; background-size: cover; background-position: center; filter: saturate(0.85); }
 .product-brand { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
-.product-name { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.1rem; color: var(--text); }
+.product-name { font-family: 'Unbounded', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.1rem; color: var(--text); }
 .product-code { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--terracotta); padding: 10px 14px; cursor: pointer; transition: background 140ms var(--ease-state); }
 .product-code:hover { background: rgba(181, 88, 58, 0.1); }
-.product-code .code-text { font-family: 'Taruno Wide', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0.06em; color: var(--terracotta); white-space: nowrap; }
+.product-code .code-text { font-family: 'Unbounded', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0.06em; color: var(--terracotta); white-space: nowrap; }
 .product-code .code-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
 .product-cta { display: block; text-align: center; padding: 14px 24px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); }
 .product-cta:hover { background: var(--burgundy); color: var(--bg); }
@@ -116,7 +115,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
 
 /* CTA BAND */
 .cta-band { padding: 96px 32px; text-align: center; background: #E4C9A3; }
-.cta-band h2 { font-family: 'Taruno Wide', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 44px); color: var(--text); margin-bottom: 16px; text-wrap: balance; }
+.cta-band h2 { font-family: 'Unbounded', sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 44px); color: var(--text); margin-bottom: 16px; text-wrap: balance; }
 .cta-band .cta-body { font-size: 1rem; color: var(--text); opacity: 0.8; margin-bottom: 32px; }
 .cta-btn { display: inline-block; padding: 16px 40px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); cursor: pointer; }
 .cta-btn:hover { background: var(--burgundy); }
@@ -124,8 +123,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
 /* FOOTER */
 .footer { background: var(--text); padding: 64px 32px; border-top: 1px solid var(--muted-40); }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; }
-.footer .wordmark img { filter: brightness(0) invert(1); }
-.footer .wordmark { margin-bottom: 16px; }
+.footer .wordmark { margin-bottom: 16px; color: var(--bg); }
 .footer-tagline { font-size: 14px; color: var(--sand); line-height: 1.5; }
 .footer h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--sand); margin-bottom: 16px; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -143,6 +141,9 @@ img { display: block; max-width: 100%; border-radius: 0; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .dropdown-menu { display: flex; }
   .nav { height: 56px; padding: 0 20px; }
   .hero { height: 55vh; }
   .hero h1 { font-size: clamp(24px, 7vw, 40px); }
@@ -166,13 +167,13 @@ img { display: block; max-width: 100%; border-radius: 0; }
 <body>
 
 <nav class="nav">
-  <div class="wordmark"><img src="assets/topnotelogo-burgundy.png" alt="Top Note"></div>
+  <a href="index.html" class="wordmark">Top Note</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="partnerships.html" class="active">Brand Partnerships</a></li>
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">Contact Us</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="partnerships.html">Brand Partnerships</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
   </ul>
   <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -181,10 +182,11 @@ img { display: block; max-width: 100%; border-radius: 0; }
 
 <div class="menu-overlay" onclick="closeMenu()"></div>
 <div class="dropdown-menu">
-  <a href="index.html#home" onclick="closeMenu()">Home</a>
+  <a href="index.html" onclick="closeMenu()">Home</a>
   <a href="index.html#services" onclick="closeMenu()">Services</a>
-  <a href="index.html#partnerships" onclick="closeMenu()">Brand Partnerships</a>
-  <a href="index.html#contact" onclick="closeMenu()">Contact Us</a>
+  <a href="partnerships.html" onclick="closeMenu()">Brand Partnerships</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <a href="contact.html" onclick="closeMenu()">Contact Us</a>
 </div>
 
 <section class="hero">
@@ -211,7 +213,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
           <h3>[Partner Brand 01]</h3>
         </div>
         <p class="note">[One line on the range guests smelled at the table.]</p>
-        <div class="discount-code" onclick="copyCode('TOPNOTE15')">
+        <div class="discount-code" onclick="copyCode('TOPNOTE15','Partner Brand 01','')">
           <span class="code-text">TOPNOTE15</span>
           <span class="code-label">15% off</span>
         </div>
@@ -222,7 +224,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
           <h3>[Partner Brand 02]</h3>
         </div>
         <p class="note">[One line on the range guests smelled at the table.]</p>
-        <div class="discount-code" onclick="copyCode('TABLE20')">
+        <div class="discount-code" onclick="copyCode('TABLE20','Partner Brand 02','')">
           <span class="code-text">TABLE20</span>
           <span class="code-label">20% off</span>
         </div>
@@ -233,7 +235,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
           <h3>[Partner Brand 03]</h3>
         </div>
         <p class="note">[One line on the range guests smelled at the table.]</p>
-        <div class="discount-code" onclick="copyCode('SETOF5')">
+        <div class="discount-code" onclick="copyCode('SETOF5','Partner Brand 03','')">
           <span class="code-text">SETOF5</span>
           <span class="code-label">Discovery set</span>
         </div>
@@ -268,7 +270,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
             <div class="product-img" style="background-image: url(assets/photography/liberty-bottle.jpg)"></div>
             <span class="product-brand">[Partner Brand 01]</span>
             <span class="product-name">[Product Name 1]</span>
-            <div class="product-code" onclick="copyCode('TOPNOTE15')">
+            <div class="product-code" onclick="copyCode('TOPNOTE15','Partner Brand 01','Product Name 1')">
               <span class="code-text">TOPNOTE15</span>
               <span class="code-label">15% off</span>
             </div>
@@ -278,7 +280,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
             <div class="product-img" style="background-image: url(assets/photography/bottle-held-light.jpg)"></div>
             <span class="product-brand">[Partner Brand 01]</span>
             <span class="product-name">[Product Name 2]</span>
-            <div class="product-code" onclick="copyCode('TOPNOTE15')">
+            <div class="product-code" onclick="copyCode('TOPNOTE15','Partner Brand 01','Product Name 2')">
               <span class="code-text">TOPNOTE15</span>
               <span class="code-label">15% off</span>
             </div>
@@ -288,7 +290,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
             <div class="product-img" style="background-image: url(assets/photography/reaching-window.jpg)"></div>
             <span class="product-brand">[Partner Brand 01]</span>
             <span class="product-name">[Product Name 3]</span>
-            <div class="product-code" onclick="copyCode('TOPNOTE15')">
+            <div class="product-code" onclick="copyCode('TOPNOTE15','Partner Brand 01','Product Name 3')">
               <span class="code-text">TOPNOTE15</span>
               <span class="code-label">15% off</span>
             </div>
@@ -307,7 +309,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
             <div class="product-img" style="background-image: url(assets/photography/bottle-held-dim.jpg)"></div>
             <span class="product-brand">[Partner Brand 02]</span>
             <span class="product-name">[Product Name 4]</span>
-            <div class="product-code" onclick="copyCode('TABLE20')">
+            <div class="product-code" onclick="copyCode('TABLE20','Partner Brand 02','Product Name 4')">
               <span class="code-text">TABLE20</span>
               <span class="code-label">20% off</span>
             </div>
@@ -317,7 +319,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
             <div class="product-img" style="background-image: url(assets/photography/spray-portrait.jpg)"></div>
             <span class="product-brand">[Partner Brand 02]</span>
             <span class="product-name">[Product Name 5]</span>
-            <div class="product-code" onclick="copyCode('TABLE20')">
+            <div class="product-code" onclick="copyCode('TABLE20','Partner Brand 02','Product Name 5')">
               <span class="code-text">TABLE20</span>
               <span class="code-label">20% off</span>
             </div>
@@ -336,7 +338,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
             <div class="product-img" style="background-image: url(assets/photography/reaching-dim.jpg)"></div>
             <span class="product-brand">[Partner Brand 03]</span>
             <span class="product-name">[Product Name 6]</span>
-            <div class="product-code" onclick="copyCode('SETOF5')">
+            <div class="product-code" onclick="copyCode('SETOF5','Partner Brand 03','Product Name 6')">
               <span class="code-text">SETOF5</span>
               <span class="code-label">Discovery set</span>
             </div>
@@ -346,7 +348,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
             <div class="product-img" style="background-image: url(assets/photography/first-scent.jpg)"></div>
             <span class="product-brand">[Partner Brand 03]</span>
             <span class="product-name">[Product Name 7]</span>
-            <div class="product-code" onclick="copyCode('SETOF5')">
+            <div class="product-code" onclick="copyCode('SETOF5','Partner Brand 03','Product Name 7')">
               <span class="code-text">SETOF5</span>
               <span class="code-label">Discovery set</span>
             </div>
@@ -356,7 +358,7 @@ img { display: block; max-width: 100%; border-radius: 0; }
             <div class="product-img" style="background-image: url(assets/photography/liberty-bottle.jpg)"></div>
             <span class="product-brand">[Partner Brand 03]</span>
             <span class="product-name">[Product Name 8]</span>
-            <div class="product-code" onclick="copyCode('SETOF5')">
+            <div class="product-code" onclick="copyCode('SETOF5','Partner Brand 03','Product Name 8')">
               <span class="code-text">SETOF5</span>
               <span class="code-label">Discovery set</span>
             </div>
@@ -371,22 +373,23 @@ img { display: block; max-width: 100%; border-radius: 0; }
 <section class="cta-band fade-in">
   <h2>[Partnership Headline]</h2>
   <p class="cta-body">[FOUNDERS TO WRITE: one line inviting brands to put their range on the table.]</p>
-  <a href="#" class="cta-btn">Become a partner</a>
+  <a href="contact.html" class="cta-btn">Become a partner</a>
 </section>
 
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="wordmark"><img src="assets/topnotelogo-burgundy.png" alt="Top Note"></div>
-      <p class="footer-tagline">[FOUNDERS TO WRITE: one-line tagline.]</p>
+      <a href="index.html" class="wordmark">Top Note</a>
+      <p class="footer-tagline">your fragrance curators</p>
     </div>
     <div>
       <h4>Navigation</h4>
       <ul class="footer-links">
-        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="index.html#services">Services</a></li>
         <li><a href="index.html#partnerships">Brand Partnerships</a></li>
-        <li><a href="index.html#contact">Contact Us</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </div>
     <div>
@@ -413,13 +416,22 @@ function closeMenu() {
 }
 
 let toastTimer;
-function copyCode(code) {
+function copyCode(code, brandName, productName) {
   if (navigator.clipboard) navigator.clipboard.writeText(code).catch(() => {});
   const toast = document.getElementById('toast');
   toast.textContent = code + ' copied';
   toast.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'copy_discount_code', {
+      event_category: 'event_page',
+      brand: brandName || '',
+      product: productName || '',
+      discount_code: code
+    });
+  }
 }
 
 document.querySelectorAll('.filter-chip').forEach(chip => {
