@@ -13,7 +13,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;700&family=DM+Sans:wght@400;500;700&family=Encode+Sans+Expanded:wght@300;400;500;700&family=Jost:wght@300;400;500;700&family=Lexend+Exa:wght@300;400;500;700&family=Lexend+Giga:wght@300;400;500;700&family=Outfit:wght@300;400;500;700&family=Saira:wght@300;400;500;700&family=Unbounded:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;700&family=DM+Sans:wght@400;500;700&family=Encode+Sans+Expanded:wght@300;400;500;700&family=Fahkwang:wght@300;400;500;700&family=Josefin+Sans:wght@300;400;500;700&family=Jost:wght@300;400;500;700&family=Lexend+Exa:wght@300;400;500;700&family=Lexend+Giga:wght@300;400;500;700&family=Montserrat:wght@300;400;500;700&family=Outfit:wght@300;400;500;700&family=Raleway:wght@300;400;500;700&family=Saira:wght@300;400;500;700&family=Sulphur+Point:wght@300;400;700&family=Syncopate:wght@400;700&family=Unbounded:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #FAF5EC;
@@ -84,15 +84,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .card-expanded { overflow: hidden; max-height: 0; opacity: 0; transition: max-height 400ms var(--ease-state), opacity 300ms var(--ease-state); }
 .card-expanded.open { max-height: 300px; opacity: 1; }
 .card-expanded p { margin-top: 20px; margin-bottom: 0; }
+.card-book { display: inline-block; margin-top: 16px; padding: 12px 28px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); }
+.card-book:hover { background: var(--burgundy); color: var(--bg); }
 
 /* PARTNERSHIPS — logo carousel */
-.partnerships { padding: 80px 32px; text-align: center; background: #E4C9A3; overflow: hidden; }
+.partnerships { padding: 80px 32px; text-align: center; background: #faf5ec; overflow: hidden; }
 .partnerships h2 { font-family: var(--display); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 44px); color: var(--text); margin-bottom: 16px; text-wrap: balance; }
 .partnerships .cta-body { font-size: 1rem; color: var(--text); opacity: 0.8; margin-bottom: 48px; }
 .logo-carousel { overflow: hidden; width: 100%; }
-.logo-scroll { display: flex; gap: 48px; animation: scroll-left 35s linear infinite; width: max-content; }
+.logo-scroll { display: flex; gap: 48px; width: max-content; -webkit-animation: scroll-left 35s linear infinite; animation: scroll-left 35s linear infinite; }
 .logo-scroll:hover { animation-play-state: paused; }
 .logo-item { flex-shrink: 0; width: 160px; height: 72px; border: 1px solid rgba(42, 28, 18, 0.3); display: grid; place-items: center; font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; font-size: 11px; color: var(--text); opacity: 0.7; }
+@-webkit-keyframes scroll-left {
+  0% { -webkit-transform: translateX(0); transform: translateX(0); }
+  100% { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+}
 @keyframes scroll-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -132,6 +138,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .footer-links a:hover { color: var(--terracotta); }
 .footer-legal { grid-column: 1 / -1; font-size: 13px; color: var(--sand); padding-top: 32px; border-top: 1px solid rgba(139, 123, 104, 0.3); }
 
+/* ABOUT — inline on landing page */
+.about-section { padding: 96px 32px; }
+.about-inner { max-width: 960px; margin: 0 auto; text-align: center; }
+.about-inner .eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta); margin-bottom: 20px; display: block; }
+.about-inner h2 { font-family: var(--display); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 48px); color: var(--text); margin-bottom: 32px; text-wrap: balance; }
+.about-inner p { font-size: 1.05rem; line-height: 1.7; color: var(--text-70); max-width: 680px; margin: 0 auto 24px; }
+.about-founders { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; text-align: center; }
+.about-founder h3 { font-family: var(--display); font-weight: 500; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 4px; }
+.about-founder .role { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracotta); }
+
 /* SCROLL ANIMATIONS */
 .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 520ms var(--ease-entrance), transform 520ms var(--ease-entrance); }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -153,6 +169,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .footer { padding: 48px 20px; }
   .footer-inner { grid-template-columns: 1fr; gap: 32px; }
   .section-header { margin-bottom: 40px; }
+  .about-section { padding: 64px 20px; }
+  .about-founders { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -169,9 +187,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <nav class="nav">
   <div class="wordmark">Top Note</div>
   <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
+    <li><a href="index.html">Home</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#partnerships">Brand Partnerships</a></li>
+    <li><a href="partnerships.html">Brand Partnerships</a></li>
     <li><a href="about.html">About Us</a></li>
     <li><a href="contact.html">Contact Us</a></li>
   </ul>
@@ -185,7 +203,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <a href="#home" onclick="closeMenu()">Home</a>
   <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#partnerships" onclick="closeMenu()">Brand Partnerships</a>
-  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <a href="#about" onclick="closeMenu()">About Us</a>
   <a href="contact.html" onclick="closeMenu()">Contact Us</a>
 </div>
 
@@ -216,6 +234,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="card-expanded">
           <p>[FOUNDERS TO WRITE: expanded description for Private Consultations.]</p>
         </div>
+        <a href="contact.html" class="card-book">Book a consultation</a>
       </div>
       <div class="card fade-in">
         <span class="card-eyebrow">02</span>
@@ -225,6 +244,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="card-expanded">
           <p>[FOUNDERS TO WRITE: expanded description for Corporate Events.]</p>
         </div>
+        <a href="contact.html" class="card-book">Book an event</a>
       </div>
       <div class="card fade-in">
         <span class="card-eyebrow">03</span>
@@ -234,6 +254,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="card-expanded">
           <p>[FOUNDERS TO WRITE: expanded description for Private Events.]</p>
         </div>
+        <a href="contact.html" class="card-book">Book an event</a>
       </div>
     </div>
   </div>
@@ -242,6 +263,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <section id="partnerships" class="partnerships fade-in">
   <h2>[Partnership Headline]</h2>
   <p class="cta-body">[One sentence of filler copy.]</p>
+  <a href="contact.html" class="cta-btn" style="margin-bottom: 48px;">Stay in touch</a>
   <div class="logo-carousel">
     <div class="logo-scroll">
       <div class="logo-item">[Partner Logo]</div>
@@ -254,6 +276,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="logo-item">[Partner Logo]</div>
       <div class="logo-item">[Partner Logo]</div>
       <div class="logo-item">[Partner Logo]</div>
+      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
+      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
+      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
+      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
+      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
+      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
+      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
+      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
+      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
+      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
     </div>
   </div>
 </section>
@@ -295,8 +327,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   </div>
 </section>
 
-<section class="cta-band">
-  <a href="contact.html" class="cta-btn">Stay in touch</a>
+<section id="about" class="about-section fade-in">
+  <div class="about-inner">
+    <span class="eyebrow">About Us</span>
+    <h2>Our Story</h2>
+    <p>[FOUNDERS TO WRITE: mission statement. What is Top Note, why does it exist, and what drives you.]</p>
+    <div class="about-founders">
+      <div class="about-founder">
+        <h3>Vanessa Eni</h3>
+        <span class="role">Co-Founder</span>
+      </div>
+      <div class="about-founder">
+        <h3>Kelsey Eisen</h3>
+        <span class="role">Co-Founder</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer id="contact" class="footer">
@@ -308,9 +354,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div>
       <h4>Navigation</h4>
       <ul class="footer-links">
-        <li><a href="#home">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#partnerships">Brand Partnerships</a></li>
+        <li><a href="partnerships.html">Brand Partnerships</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
@@ -319,7 +365,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <h4>Contact</h4>
       <ul class="footer-links">
         <li><a href="#">[FOUNDERS: email]</a></li>
-        <li><a href="#">Instagram</a></li>
+        <li><a href="https://www.instagram.com/topnotescentstudio/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
     </div>
     <p class="footer-legal">&copy; 2026 Top Note Scent Studio. All rights reserved.</p>
@@ -348,15 +394,22 @@ setTimeout(() => {
   heroShowingSecond = true;
 }, 1000);
 
+let heroTicking = false;
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 50 && heroShowingSecond) {
-    heroImg2.classList.remove('active');
-    heroTextOverlay.classList.remove('active');
-    heroShowingSecond = false;
-  } else if (window.scrollY <= 50 && !heroShowingSecond) {
-    heroImg2.classList.add('active');
-    heroTextOverlay.classList.add('active');
-    heroShowingSecond = true;
+  if (!heroTicking) {
+    requestAnimationFrame(() => {
+      if (window.scrollY > 50 && heroShowingSecond) {
+        heroImg2.classList.remove('active');
+        heroTextOverlay.classList.remove('active');
+        heroShowingSecond = false;
+      } else if (window.scrollY <= 10 && !heroShowingSecond) {
+        heroImg2.classList.add('active');
+        heroTextOverlay.classList.add('active');
+        heroShowingSecond = true;
+      }
+      heroTicking = false;
+    });
+    heroTicking = true;
   }
 }, { passive: true });
 
@@ -389,7 +442,7 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
-<div style="position:fixed;top:12px;right:12px;z-index:9999;background:rgba(42,28,18,0.85);padding:8px 14px;display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:12px;color:#FAF5EC;border-radius:4px;">
+<div style="position:fixed;bottom:12px;right:12px;z-index:9999;background:rgba(42,28,18,0.85);padding:8px 14px;display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:12px;color:#FAF5EC;border-radius:4px;">
   <label for="fontSwitch" style="white-space:nowrap;">Font preview:</label>
   <select id="fontSwitch" style="font-family:'DM Sans',sans-serif;font-size:12px;padding:4px 6px;border:1px solid rgba(250,245,236,0.3);background:rgba(250,245,236,0.1);color:#FAF5EC;border-radius:3px;cursor:pointer;">
     <option value="'Encode Sans Expanded', sans-serif">Encode Sans Expanded</option>
@@ -400,6 +453,12 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     <option value="'Lexend Giga', sans-serif">Lexend Giga</option>
     <option value="'Jost', sans-serif">Jost</option>
     <option value="'Albert Sans', sans-serif">Albert Sans</option>
+    <option value="'Josefin Sans', sans-serif">Josefin Sans</option>
+    <option value="'Raleway', sans-serif">Raleway</option>
+    <option value="'Fahkwang', sans-serif">Fahkwang</option>
+    <option value="'Syncopate', sans-serif">Syncopate</option>
+    <option value="'Sulphur Point', sans-serif">Sulphur Point</option>
+    <option value="'Montserrat', sans-serif">Montserrat</option>
   </select>
 </div>
 <script>
