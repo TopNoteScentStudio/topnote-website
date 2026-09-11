@@ -35,6 +35,7 @@ html { scroll-behavior: smooth; }
 body { background: var(--bg); font-family: 'DM Sans', system-ui, sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 2px; }
 
 /* NAV */
 .nav { position: sticky; top: 0; z-index: 50; height: 64px; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; border-bottom: 1px solid var(--muted-40); }
@@ -47,8 +48,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .menu-overlay { position: fixed; inset: 0; z-index: 90; display: none; }
 .menu-overlay.open { display: block; }
-.dropdown-menu { position: fixed; top: 56px; right: 20px; z-index: 100; background: var(--bg); border: 1px solid var(--muted-40); padding: 16px 32px; display: none; flex-direction: column; gap: 16px; opacity: 0; -webkit-transform: translateY(-8px); transform: translateY(-8px); pointer-events: none; -webkit-transition: opacity 240ms var(--ease-state), -webkit-transform 240ms var(--ease-state); transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state); }
-.dropdown-menu.open { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); pointer-events: auto; }
+.dropdown-menu { position: fixed; top: 56px; right: 20px; z-index: 100; background: var(--bg); border: 1px solid var(--muted-40); padding: 16px 32px; display: none; flex-direction: column; gap: 16px; opacity: 0; -webkit-transform: translateY(-8px); transform: translateY(-8px); pointer-events: none; visibility: hidden; -webkit-transition: opacity 240ms var(--ease-state), -webkit-transform 240ms var(--ease-state), visibility 0ms 240ms; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state), visibility 0ms 240ms; }
+.dropdown-menu.open { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); pointer-events: auto; visibility: visible; -webkit-transition: opacity 240ms var(--ease-state), -webkit-transform 240ms var(--ease-state), visibility 0ms; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state), visibility 0ms; }
 .dropdown-menu a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); white-space: nowrap; }
 .dropdown-menu a:hover { color: var(--terracotta); }
 
@@ -105,6 +106,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .fade-in { opacity: 1; -webkit-transform: none; transform: none; }
   .fade-in.visible { -webkit-animation: none; animation: none; }
   .dropdown-menu { -webkit-transition: none; transition: none; }
