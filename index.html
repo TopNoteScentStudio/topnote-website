@@ -585,12 +585,11 @@ function updateDots(n) {
 }
 
 function goToSlide(n) {
+  const idx = (n + slides.length) % slides.length;
   if (isMobile()) {
-    const idx = (n + slides.length) % slides.length;
-    slides[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    photoCarousel.scrollTo({ left: idx * photoCarousel.offsetWidth, behavior: 'smooth' });
   } else {
     slides[currentSlide].classList.remove('active');
-    const idx = (n + slides.length) % slides.length;
     currentSlide = idx;
     slides[currentSlide].classList.add('active');
     dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
@@ -620,10 +619,12 @@ let autoplayTimer;
 
 function advanceSlide() { goToSlide(currentSlide + 1); }
 
+function autoplayInterval() { return isMobile() ? 8000 : 5000; }
+
 function startAutoplay() {
   if (prefersReducedMotion) return;
   stopAutoplay();
-  autoplayTimer = setInterval(advanceSlide, 5000);
+  autoplayTimer = setInterval(advanceSlide, autoplayInterval());
 }
 
 function stopAutoplay() { clearInterval(autoplayTimer); }
@@ -634,8 +635,8 @@ function resetAutoplay() {
 }
 
 if (!prefersReducedMotion) {
-  setTimeout(advanceSlide, 3000);
-  autoplayTimer = setInterval(advanceSlide, 5000);
+  setTimeout(advanceSlide, isMobile() ? 5000 : 3000);
+  autoplayTimer = setInterval(advanceSlide, autoplayInterval());
 }
 
 photoCarousel.addEventListener('mouseenter', stopAutoplay);
