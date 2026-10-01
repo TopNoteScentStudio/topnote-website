@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Top Note Scent Studio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23B5583A'/></svg>">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH4JZ6T14"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -182,8 +183,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .contact-form .options { display: flex; flex-wrap: wrap; gap: 12px 24px; }
 .contact-form .options label { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--bg); cursor: pointer; text-transform: none; letter-spacing: 0; font-weight: 400; margin-bottom: 0; }
 .contact-form .options input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--terracotta); cursor: pointer; }
-.contact-form .submit-btn { display: block; width: 100%; padding: 16px; background: var(--amber); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; border: none; cursor: pointer; transition: background 140ms var(--ease-state); margin-top: 8px; }
-.contact-form .submit-btn:hover { background: var(--terracotta); }
+.contact-form .submit-btn { display: block; width: 100%; padding: 16px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; border: none; cursor: pointer; transition: background 140ms var(--ease-state); margin-top: 8px; }
+.contact-form .submit-btn:hover { background: var(--burgundy); }
 
 /* SCROLL ANIMATIONS */
 .fade-in { opacity: 0; -webkit-transform: translate3d(0, 16px, 0); transform: translate3d(0, 16px, 0); }
@@ -321,36 +322,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   </div>
 </section>
 
-<section id="partnerships" class="partnerships fade-in">
-  <h2>[Partnership Headline]</h2>
-  <p class="cta-body">[One sentence of filler copy.]</p>
-  <a href="#contact" class="cta-btn" style="margin-bottom: 48px;">Stay in touch</a>
-  <div class="logo-carousel">
-    <div class="logo-scroll">
-      <div class="logo-item">[Partner Logo]</div>
-      <div class="logo-item">[Partner Logo]</div>
-      <div class="logo-item">[Partner Logo]</div>
-      <div class="logo-item">[Partner Logo]</div>
-      <div class="logo-item">[Partner Logo]</div>
-      <div class="logo-item">[Partner Logo]</div>
-      <div class="logo-item">[Partner Logo]</div>
-      <div class="logo-item">[Partner Logo]</div>
-      <div class="logo-item">[Partner Logo]</div>
-      <div class="logo-item">[Partner Logo]</div>
-      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
-      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
-      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
-      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
-      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
-      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
-      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
-      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
-      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
-      <div class="logo-item" aria-hidden="true">[Partner Logo]</div>
-    </div>
-  </div>
-</section>
-
 <section class="gallery-testimonials">
   <div class="inner">
     <div>
@@ -388,6 +359,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       </div>
     </div>
   </div>
+</section>
+
+<section id="partnerships" class="partnerships fade-in">
+  <h2>[Partnership Headline]</h2>
+  <p class="cta-body">[One sentence of filler copy, including prompting the viewer to request a deck.]</p>
+  <a href="#contact" class="cta-btn">Get in touch</a>
 </section>
 
 <section id="about" class="about-section fade-in">
@@ -446,6 +423,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <div class="checkbox-group">
           <span class="group-label">What are you inquiring about?</span>
           <div class="options">
+            <label><input type="checkbox" name="inquiry" value="Consultation"> Consultation</label>
+            <label><input type="checkbox" name="inquiry" value="Event Scent Bar"> Event Scent Bar</label>
             <label><input type="checkbox" name="inquiry" value="Private / Corporate Events"> Private / Corporate Events</label>
             <label><input type="checkbox" name="inquiry" value="Partnerships"> Partnerships</label>
             <label><input type="checkbox" name="inquiry" value="Press + PR"> Press + PR</label>
