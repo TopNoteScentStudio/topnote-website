@@ -286,9 +286,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     <h2>Experiential discovery of niche and independent perfume brands</h2>
     <a href="#services" class="hero-learn-more">Learn more</a>
   </div>
-  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline>
-    <source src="assets/photography/movieout.7-compressed.mp4" type="video/mp4">
-  </video>
+  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline></video>
 </section>
 
 <section id="services" class="services">
@@ -494,6 +492,17 @@ function closeMenu() {
 // for iOS Safari 18 compatibility.
 // With reduce-motion: CSS shows the overlay immediately, JS does nothing.
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Set video source based on screen size
+const heroVideoEl = document.querySelector('.hero-video');
+if (heroVideoEl) {
+  var vidSrc = window.innerWidth <= 768
+    ? 'assets/photography/movieout.7-mobile.mp4'
+    : 'assets/photography/movieout.7-compressed.mp4';
+  heroVideoEl.src = vidSrc;
+  heroVideoEl.load();
+  heroVideoEl.play().catch(function() {});
+}
 
 if (!prefersReducedMotion) {
   const heroImg = document.querySelector('.hero-img');
