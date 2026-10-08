@@ -59,14 +59,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* HERO — crossfade */
 .hero { position: relative; height: 85vh; height: 85dvh; overflow: hidden; }
-.hero-img { position: absolute; inset: 0; background-size: cover; background-position: center 55%; -webkit-filter: saturate(0.85); filter: saturate(0.85); -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
+.hero-img { position: absolute; inset: 0; z-index: 1; background-size: cover; background-position: center 55%; -webkit-filter: saturate(0.85); filter: saturate(0.85); -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
+.hero-img.hero-hide { -webkit-animation: heroFadeOut 1s ease forwards; animation: heroFadeOut 1s ease forwards; }
+.hero-img.hero-show { -webkit-animation: heroFadeIn 3s ease forwards; animation: heroFadeIn 3s ease forwards; }
 .hero-img-overlay { position: absolute; inset: 0; background: rgba(58, 29, 25, 0.7); }
 .hero-text-overlay { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 32px; opacity: 1; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
 .hero-text-overlay.hero-hide { -webkit-animation: heroFadeOut 1s ease forwards; animation: heroFadeOut 1s ease forwards; }
 .hero-text-overlay.hero-show { -webkit-animation: heroFadeIn 1s ease forwards; animation: heroFadeIn 1s ease forwards; }
-.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0; pointer-events: none; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
-.hero-video.active { -webkit-animation: heroFadeIn 1s ease forwards; animation: heroFadeIn 1s ease forwards; }
-.hero-video.fade-out { -webkit-animation: heroFadeOut 3s ease forwards; animation: heroFadeOut 3s ease forwards; }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 1; pointer-events: none; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
 @-webkit-keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @-webkit-keyframes heroFadeOut { from { opacity: 1; } to { opacity: 0; } }
@@ -233,10 +233,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .fade-in { opacity: 1; -webkit-transform: none; transform: none; }
   .fade-in.visible { -webkit-animation: none; animation: none; }
   .dropdown-menu { -webkit-transition: none; transition: none; }
-  .hero-video { opacity: 1; }
+  .hero-img { opacity: 0; }
   .hero-text-overlay { opacity: 0; }
-  .hero-video.active, .hero-video.fade-out { -webkit-animation: none; animation: none; opacity: 1; }
-  .hero-text-overlay.hero-hide, .hero-text-overlay.hero-show { -webkit-animation: none; animation: none; opacity: 0; }
+  .hero-img.hero-hide, .hero-img.hero-show { -webkit-animation: none; animation: none; }
+  .hero-text-overlay.hero-hide, .hero-text-overlay.hero-show { -webkit-animation: none; animation: none; }
   .logo-carousel { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .logo-scroll { -webkit-animation: none; animation: none; width: auto; gap: 24px; }
   .card-expanded { -webkit-transition: none; transition: none; }
@@ -286,7 +286,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     <h2>Experiential discovery of niche and independent perfume brands</h2>
     <a href="#services" class="hero-learn-more">Learn more</a>
   </div>
-  <video class="hero-video" autoplay muted loop playsinline>
+  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline>
     <source src="assets/photography/movieout.7-compressed.mp4" type="video/mp4">
   </video>
 </section>
@@ -496,24 +496,22 @@ function closeMenu() {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!prefersReducedMotion) {
-  const heroVideo = document.querySelector('.hero-video');
+  const heroImg = document.querySelector('.hero-img');
   const heroTextOverlay = document.querySelector('.hero-text-overlay');
   let heroShowingVideo = false;
 
-  heroVideo.play().catch(function() {});
-
   function showVideo() {
-    heroVideo.classList.remove('fade-out');
+    heroImg.classList.remove('hero-show');
     heroTextOverlay.classList.remove('hero-show');
-    heroVideo.classList.add('active');
+    heroImg.classList.add('hero-hide');
     heroTextOverlay.classList.add('hero-hide');
     heroShowingVideo = true;
   }
 
   function hideVideo() {
-    heroVideo.classList.remove('active');
+    heroImg.classList.remove('hero-hide');
     heroTextOverlay.classList.remove('hero-hide');
-    heroVideo.classList.add('fade-out');
+    heroImg.classList.add('hero-show');
     heroTextOverlay.classList.add('hero-show');
     heroShowingVideo = false;
   }
