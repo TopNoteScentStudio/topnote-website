@@ -1,0 +1,46 @@
+Top Note Website — Asset Inventory
+===================================
+
+FONTS (Google Fonts, used across all pages)
+- DM Sans (weights: 400, 500, 700) — body text
+- Fahkwang (weights: 300, 400, 500, 700) — display headings
+
+
+PHOTOGRAPHY — Currently used on the site
+- spray-portrait.jpg — Hero image 1 (original portrait)
+- DSC09623.jpg — Hero image 2 (crossfade)
+- DSC09551.jpg — Photo carousel slide 1
+- DSC00524.jpg — Photo carousel slide 2
+- DSC09621.jpg — Photo carousel slide 3
+- DSC09567.jpg — Photo carousel slide 4
+- DSC00579.jpg — Photo carousel slide 5
+- DSC00545.jpg — Photo carousel slide 6
+- vanessa.jpeg — Vanessa's founder photo
+- liberty-bottle.jpg — Partnerships page
+- bottle-held-dim.jpg — Partnerships page
+- bottle-held-light.jpg — Partnerships page
+- first-scent.jpg — Partnerships page
+- reaching-dim.jpg — Partnerships page
+- reaching-window.jpg — Partnerships page
+
+PHOTOGRAPHY — In repo but NOT currently used
+- DSC00558.jpg
+- DSC00576.jpg
+- DSC09588.jpg
+
+VIDEO — In repo but NOT currently used
+- motion-01.mp4
+- motion-02.mp4
+- motion-03.mp4
+- motion-04.mp4
+
+LOGOS — In repo but NOT currently used
+- topnotelogo.png
+- topnotelogo-burgundy.png
+- topnotelogo-cropped.png
+- topnotelogo-dark.png
+
+OTHER
+- Favicon: terracotta red circle (inline, no file)
+- Google Analytics: G-CSH4JZ6T14
+- Formspree form endpoint: mljrnpqy

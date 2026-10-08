@@ -7,3 +7,6 @@ node_modules/
 
 # Logo files (temporary — pending licensing review)
 assets/topnotelogo*.png
+
+# Original uncompressed video (too large for GitHub)
+assets/photography/movieout.7.mp4

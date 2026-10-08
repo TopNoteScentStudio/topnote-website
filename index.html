@@ -40,7 +40,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* NAV */
 .nav { position: sticky; top: 0; z-index: 50; height: 64px; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; border-bottom: 1px solid var(--muted-40); }
-.wordmark { display: block; font-family: var(--display); font-weight: 500; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); text-decoration: none; line-height: 1; }
+.wordmark { display: block; text-decoration: none; line-height: 1; }
+.wordmark { overflow: hidden; height: 48px; display: flex; align-items: center; }
+.wordmark img { height: 144px; width: auto; mix-blend-mode: multiply; margin-left: -30px; }
 .nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
 .nav-links a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 13px; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); }
 .nav-links a:hover { color: var(--terracotta); }
@@ -58,13 +60,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* HERO — crossfade */
 .hero { position: relative; height: 85vh; height: 85dvh; overflow: hidden; }
 .hero-img { position: absolute; inset: 0; background-size: cover; background-position: center 55%; -webkit-filter: saturate(0.85); filter: saturate(0.85); -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
-.hero-img-2 { opacity: 0; }
-.hero-img-2.active { -webkit-animation: heroFadeIn 1s ease forwards; animation: heroFadeIn 1s ease forwards; }
-.hero-img-2-overlay { position: absolute; inset: 0; background: rgba(58, 29, 25, 0.7); }
-.hero-text-overlay { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 32px; opacity: 0; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
-.hero-text-overlay.active { -webkit-animation: heroFadeIn 1s ease forwards; animation: heroFadeIn 1s ease forwards; }
-.hero-img-2.fade-out { -webkit-animation: heroFadeOut 3s ease forwards; animation: heroFadeOut 3s ease forwards; }
-.hero-text-overlay.fade-out { -webkit-animation: heroFadeOut 2s ease forwards; animation: heroFadeOut 2s ease forwards; }
+.hero-img-overlay { position: absolute; inset: 0; background: rgba(58, 29, 25, 0.7); }
+.hero-text-overlay { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 32px; opacity: 1; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
+.hero-text-overlay.hero-hide { -webkit-animation: heroFadeOut 1s ease forwards; animation: heroFadeOut 1s ease forwards; }
+.hero-text-overlay.hero-show { -webkit-animation: heroFadeIn 1s ease forwards; animation: heroFadeIn 1s ease forwards; }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
+.hero-video.active { -webkit-animation: heroFadeIn 1s ease forwards; animation: heroFadeIn 1s ease forwards; }
+.hero-video.fade-out { -webkit-animation: heroFadeOut 3s ease forwards; animation: heroFadeOut 3s ease forwards; }
 @-webkit-keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @-webkit-keyframes heroFadeOut { from { opacity: 1; } to { opacity: 0; } }
@@ -127,9 +129,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted-40); border: none; cursor: pointer; padding: 0; transition: background 200ms; }
 .carousel-dot.active { background: var(--terracotta); }
 .testimonials { display: flex; flex-direction: column; gap: 24px; }
-.testimonial-card { border: 1px solid var(--muted-40); padding: 28px; background: rgba(228, 201, 163, 0.2); }
-.testimonial-card blockquote { font-size: 15px; line-height: 1.65; font-style: italic; color: var(--text); margin-bottom: 16px; }
+.testimonial-card { position: relative; border: none; padding: 32px 28px 28px; background: rgba(228, 201, 163, 0.2); border-radius: 12px; }
+.testimonial-card::before { content: "\201C"; position: absolute; top: 16px; left: 20px; font-family: Georgia, serif; font-size: 48px; line-height: 1; color: var(--text); }
+.testimonial-card blockquote { font-size: 15px; line-height: 1.65; font-style: italic; color: var(--text); margin-bottom: 16px; padding-top: 24px; }
 .testimonial-card cite { font-size: 13px; font-style: normal; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.testimonial-card + .testimonial-card { margin-top: 8px; }
+.testimonial-card + .testimonial-card::after { content: ''; position: absolute; top: -20px; left: 10%; width: 80%; height: 8px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M0,4 Q5,0 10,4 Q15,8 20,4 Q25,0 30,4 Q35,8 40,4 Q45,0 50,4 Q55,8 60,4 Q65,0 70,4 Q75,8 80,4 Q85,0 90,4 Q95,8 100,4 Q105,0 110,4 Q115,8 120,4' fill='none' stroke='%23C1893C' stroke-width='0.8'/%3E%3C/svg%3E") repeat-x center; background-size: 120px 8px; -webkit-animation: wiggle 8s linear infinite; animation: wiggle 8s linear infinite; }
 
 /* CTA BAND */
 .cta-band { padding: 64px 32px; text-align: center; background: var(--bg); }
@@ -139,7 +144,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* FOOTER */
 .footer { background: var(--text); padding: 64px 32px; border-top: 1px solid var(--muted-40); }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; }
-.footer .wordmark { margin-bottom: 16px; color: var(--bg); }
+.footer .wordmark { margin-bottom: 16px; }
+.footer .wordmark img { filter: invert(1); mix-blend-mode: screen; }
 .footer-tagline { font-size: 14px; color: var(--sand); line-height: 1.5; font-style: italic; }
 .footer h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--sand); margin-bottom: 16px; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -188,9 +194,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* SCROLL ANIMATIONS */
 .fade-in { opacity: 0; -webkit-transform: translate3d(0, 16px, 0); transform: translate3d(0, 16px, 0); }
-.fade-in.visible { -webkit-animation: fadeInUp 520ms cubic-bezier(.16, 1, .3, 1) forwards; animation: fadeInUp 520ms cubic-bezier(.16, 1, .3, 1) forwards; }
+.fade-in.visible { -webkit-animation: fadeInUp 1.8s cubic-bezier(.16, 1, .3, 1) forwards; animation: fadeInUp 1.8s cubic-bezier(.16, 1, .3, 1) forwards; }
 @-webkit-keyframes fadeInUp { to { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); } }
 @keyframes fadeInUp { to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@-webkit-keyframes wiggle { from { background-position: 0 center; } to { background-position: 120px center; } }
+@keyframes wiggle { from { background-position: 0 center; } to { background-position: 120px center; } }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -225,18 +233,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .fade-in { opacity: 1; -webkit-transform: none; transform: none; }
   .fade-in.visible { -webkit-animation: none; animation: none; }
   .dropdown-menu { -webkit-transition: none; transition: none; }
-  .hero-img-2 { opacity: 1; }
-  .hero-text-overlay { opacity: 1; }
-  .hero-img-2.active, .hero-text-overlay.active { -webkit-animation: none; animation: none; opacity: 1; }
-  .hero-img-2.fade-out, .hero-text-overlay.fade-out { -webkit-animation: none; animation: none; opacity: 1; }
+  .hero-video { opacity: 1; }
+  .hero-text-overlay { opacity: 0; }
+  .hero-video.active, .hero-video.fade-out { -webkit-animation: none; animation: none; opacity: 1; }
+  .hero-text-overlay.hero-hide, .hero-text-overlay.hero-show { -webkit-animation: none; animation: none; opacity: 0; }
   .logo-carousel { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .logo-scroll { -webkit-animation: none; animation: none; width: auto; gap: 24px; }
   .card-expanded { -webkit-transition: none; transition: none; }
+  .testimonial-card + .testimonial-card::after { -webkit-animation: none; animation: none; }
 }
 
 @media (forced-colors: active) {
   .hero-learn-more, .card-book, .cta-btn, .contact-form .submit-btn { border: 2px solid ButtonText; }
-  .hero-img-2-overlay { background: Canvas; opacity: 0.85; }
+  .hero-img-overlay { background: Canvas; opacity: 0.85; }
   .hero-text-overlay h2, .hero-learn-more { color: CanvasText; }
   .carousel-btn { border: 1px solid ButtonText; }
   .carousel-dot { border: 1px solid ButtonText; }
@@ -247,7 +256,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <body>
 
 <nav class="nav">
-  <div class="wordmark">Top Note</div>
+  <div class="wordmark"><img src="assets/topnote-gruppo.png" alt="Top Note"></div>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#services">Services</a></li>
@@ -270,14 +279,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 </div>
 
 <section id="home" class="hero">
-  <div class="hero-img" style="background-image: url(assets/photography/spray-portrait.jpg)"></div>
-  <div class="hero-img hero-img-2" style="background-image: url(assets/photography/DSC09623.jpg)">
-    <div class="hero-img-2-overlay"></div>
+  <div class="hero-img" style="background-image: url(assets/photography/DSC09623.jpg)">
+    <div class="hero-img-overlay"></div>
   </div>
   <div class="hero-text-overlay">
     <h2>Experiential discovery of niche and independent perfume brands</h2>
     <a href="#services" class="hero-learn-more">Learn more</a>
   </div>
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="assets/photography/movieout.7-compressed.mp4" type="video/mp4">
+  </video>
 </section>
 
 <section id="services" class="services">
@@ -322,7 +333,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   </div>
 </section>
 
-<section class="gallery-testimonials">
+<section class="gallery-testimonials fade-in">
   <div class="inner">
     <div>
       <div class="photo-carousel" id="photoCarousel">
@@ -346,16 +357,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     </div>
     <div class="testimonials">
       <div class="testimonial-card">
-        <blockquote>&ldquo;The consultation experience felt so intimate, which is fitting because scent is so intimate. I didn&rsquo;t feel pushed to choose anything in particular; instead, I was led by the nose to find the perfumes that I would truly love. I&rsquo;ve already purchased one and plan to purchase more when I can.&rdquo;</blockquote>
-        <cite>Esm&eacute; Wang</cite>
+        <blockquote>The consultation experience felt so intimate, which is fitting because scent is so intimate. I didn&rsquo;t feel pushed to choose anything in particular; instead, I was led by the nose to find the perfumes that I would truly love. I&rsquo;ve already purchased one and plan to purchase more when I can.</blockquote>
+        <cite>Esm&eacute;</cite>
       </div>
       <div class="testimonial-card">
-        <blockquote>&ldquo;I&rsquo;ve been a fragrance enthusiast for years and would recommend booking a consultation to anyone, whether you&rsquo;re just beginning to explore your taste or have smelled around a lot. There was a great variety of scent styles, and some I wouldn&rsquo;t have discovered otherwise. I felt very understood, and found a few scents I really love.&rdquo;</blockquote>
-        <cite>Valerie Pohorsky</cite>
+        <blockquote>I&rsquo;ve been a fragrance enthusiast for years and would recommend booking a consultation to anyone, whether you&rsquo;re just beginning to explore your taste or have smelled around a lot. There was a great variety of scent styles, and some I wouldn&rsquo;t have discovered otherwise. I felt very understood, and found a few scents I really love.</blockquote>
+        <cite>Valerie</cite>
       </div>
       <div class="testimonial-card">
-        <blockquote>&ldquo;[FOUNDERS TO WRITE: testimonial quote.]&rdquo;</blockquote>
-        <cite>[FOUNDERS TO WRITE: name and context.]</cite>
+        <blockquote>A great experience! Vanessa was very thoughtful and able to find scents for me that matched my tastes better than I could describe them myself. Was introduced to very unique and interesting fragrances. Really appreciated the attention to detail and kindness during the consultation. Highly recommended!</blockquote>
+        <cite>Christian</cite>
       </div>
     </div>
   </div>
@@ -394,9 +405,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     <div class="contact-info">
       <span class="eyebrow">Get in touch</span>
       <h2>Contact Us</h2>
-      <p class="subtitle">We'd love to hear from you — whether you're interested in a private consultation, an event, or a partnership.</p>
+      <p class="subtitle">We can't wait to hear from you.</p>
       <ul class="contact-links">
-        <li><a href="#">[FOUNDERS: email]</a></li>
+        <li><a href="mailto:topnotescentstudio@gmail.com">topnotescentstudio@gmail.com</a></li>
         <li><a href="https://www.instagram.com/topnotescentstudio/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
     </div>
@@ -444,7 +455,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="wordmark">Top Note</div>
+      <div class="wordmark"><img src="assets/topnote-gruppo.png" alt="Top Note"></div>
       <p class="footer-tagline">your fragrance curators</p>
     </div>
     <div>
@@ -460,7 +471,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     <div>
       <h4>Contact</h4>
       <ul class="footer-links">
-        <li><a href="#">[FOUNDERS: email]</a></li>
+        <li><a href="mailto:topnotescentstudio@gmail.com">topnotescentstudio@gmail.com</a></li>
         <li><a href="https://www.instagram.com/topnotescentstudio/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
     </div>
@@ -485,30 +496,30 @@ function closeMenu() {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!prefersReducedMotion) {
-  const heroImg2 = document.querySelector('.hero-img-2');
+  const heroVideo = document.querySelector('.hero-video');
   const heroTextOverlay = document.querySelector('.hero-text-overlay');
-  let heroShowingSecond = false;
+  let heroShowingVideo = false;
 
-  function showHero() {
-    heroImg2.classList.remove('fade-out');
-    heroTextOverlay.classList.remove('fade-out');
-    heroImg2.classList.add('active');
-    heroTextOverlay.classList.add('active');
-    heroShowingSecond = true;
+  function showVideo() {
+    heroVideo.classList.remove('fade-out');
+    heroTextOverlay.classList.remove('hero-show');
+    heroVideo.classList.add('active');
+    heroTextOverlay.classList.add('hero-hide');
+    heroShowingVideo = true;
   }
 
-  function hideHero() {
-    heroImg2.classList.remove('active');
-    heroTextOverlay.classList.remove('active');
-    heroImg2.classList.add('fade-out');
-    heroTextOverlay.classList.add('fade-out');
-    heroShowingSecond = false;
+  function hideVideo() {
+    heroVideo.classList.remove('active');
+    heroTextOverlay.classList.remove('hero-hide');
+    heroVideo.classList.add('fade-out');
+    heroTextOverlay.classList.add('hero-show');
+    heroShowingVideo = false;
   }
 
   function activateHero() {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        showHero();
+        showVideo();
       });
     });
   }
@@ -524,10 +535,10 @@ if (!prefersReducedMotion) {
     if (!heroTicking) {
       requestAnimationFrame(() => {
         const scrollY = window.scrollY ?? window.pageYOffset;
-        if (scrollY > 50 && heroShowingSecond) {
-          hideHero();
-        } else if (scrollY <= 10 && !heroShowingSecond) {
-          showHero();
+        if (scrollY > 50 && heroShowingVideo) {
+          hideVideo();
+        } else if (scrollY <= 10 && !heroShowingVideo) {
+          showVideo();
         }
         heroTicking = false;
       });
