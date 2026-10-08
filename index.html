@@ -66,6 +66,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .hero-text-overlay { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 32px; opacity: 1; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
 .hero-text-overlay.hero-hide { -webkit-animation: heroFadeOut 1s ease forwards; animation: heroFadeOut 1s ease forwards; }
 .hero-text-overlay.hero-show { -webkit-animation: heroFadeIn 1s ease forwards; animation: heroFadeIn 1s ease forwards; }
+.hero-img-alt { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 0; display: none; }
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 1; pointer-events: none; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
 @-webkit-keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -207,6 +208,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .hamburger { display: flex; }
   .dropdown-menu { display: flex; }
   .hero { height: 70vh; height: 70dvh; }
+  .hero-video { display: none; }
+  .hero-img-alt { display: block; }
   .hero-text-overlay h2 { font-size: clamp(15px, 4.5vw, 20px); padding: 0 12px; }
   .services { padding: 64px 20px; }
   .card-grid { grid-template-columns: 1fr; }
@@ -286,6 +289,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     <h2>Experiential discovery of niche and independent perfume brands</h2>
     <a href="#services" class="hero-learn-more">Learn more</a>
   </div>
+  <div class="hero-img-alt" style="background-image: url(assets/photography/spray-portrait.jpg)"></div>
   <video class="hero-video" autoplay muted loop playsinline webkit-playsinline></video>
 </section>
 
@@ -493,13 +497,10 @@ function closeMenu() {
 // With reduce-motion: CSS shows the overlay immediately, JS does nothing.
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Set video source based on screen size
+// Set video source (desktop only)
 const heroVideoEl = document.querySelector('.hero-video');
-if (heroVideoEl) {
-  var vidSrc = window.innerWidth <= 768
-    ? 'assets/photography/movieout.7-mobile.mp4'
-    : 'assets/photography/movieout.7-compressed.mp4';
-  heroVideoEl.src = vidSrc;
+if (heroVideoEl && window.innerWidth > 768) {
+  heroVideoEl.src = 'assets/photography/movieout.7-compressed.mp4';
   heroVideoEl.load();
   heroVideoEl.play().catch(function() {});
 }
