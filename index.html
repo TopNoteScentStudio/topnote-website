@@ -39,9 +39,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 2px; }
 
 /* NAV */
-.nav { position: sticky; top: 0; z-index: 50; height: 64px; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; border-bottom: 1px solid var(--muted-40); }
+.nav { position: sticky; top: 0; z-index: 50; height: 66px; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; border-bottom: 1px solid var(--muted-40); }
 .wordmark { display: block; text-decoration: none; line-height: 1; }
-.wordmark { overflow: hidden; height: 64px; display: flex; align-items: center; }
+.wordmark { overflow: hidden; height: 66px; display: flex; align-items: center; }
 .wordmark img { height: 216px; width: auto; mix-blend-mode: multiply; margin-left: -45px; transform: scale(1.15); transform-origin: left center; }
 .nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
 .nav-links a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 13px; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); }
@@ -204,7 +204,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .hamburger { display: flex; }
   .dropdown-menu { display: flex; }
   .hero { height: 70vh; height: 70dvh; }
-  .hero-img { background-position: center bottom; }
+  .hero-img { bottom: -50%; background-position: center bottom; }
   .hero-text-overlay h2 { font-size: clamp(15px, 4.5vw, 20px); padding: 0 12px; }
   .hero-text-overlay h2.sentence-case { font-size: clamp(18px, 5.2vw, 24px); }
   .services { padding: 64px 20px; }
