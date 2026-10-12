@@ -63,7 +63,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .hero-img-overlay { position: absolute; inset: 0; background: rgba(58, 29, 25, 0.7); }
 .hero-text-overlay { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 32px; }
 .hero-text-overlay h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; color: var(--bg); font-size: clamp(18px, 2.5vw, 30px); line-height: 1.5; max-width: 680px; margin-bottom: 96px; }
-.hero-learn-more { display: inline-block; padding: 14px 36px; border: 1px solid var(--bg); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; transition: background 200ms var(--ease-state); }
+.hero-learn-more { display: inline-block; padding: 14px 36px; border: 1px solid var(--bg); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; transition: background 200ms var(--ease-state); border-radius: 3px; }
 .hero-learn-more:hover { background: rgba(250, 245, 236, 0.15); }
 .hero-text-overlay h2.sentence-case { text-transform: none; letter-spacing: 0.01em; font-size: clamp(21px, 3vw, 36px); }
 .case-toggle { position: absolute; bottom: 20px; right: 20px; z-index: 3; display: flex; gap: 0; border: 1px solid rgba(250, 245, 236, 0.4); border-radius: 4px; overflow: hidden; }
@@ -81,16 +81,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .services { background: var(--bg); padding: 96px 32px; }
 .services-inner { max-width: 1200px; margin: 0 auto; }
 .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.card { border-top: 2px solid var(--burgundy); padding: 32px 0; }
+.card { border-top: 2px solid var(--burgundy); padding: 32px 0; display: flex; flex-direction: column; }
+.card-toggle { margin-top: auto; }
 .card .card-eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta); margin-bottom: 12px; display: block; }
 .card h3 { font-family: var(--display); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.25rem; color: var(--text); margin-bottom: 16px; }
 .card p { font-size: 15px; line-height: 1.6; color: var(--muted); margin-bottom: 24px; }
-.card-toggle { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--terracotta); transition: color 140ms var(--ease-state); cursor: pointer; background: none; border: none; font-family: inherit; padding: 0; }
+.card-toggle { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--terracotta); transition: color 140ms var(--ease-state); cursor: pointer; background: none; border: none; font-family: inherit; padding: 0; text-align: left; align-self: flex-start; }
 .card-toggle:hover { color: var(--burgundy); }
 .card-expanded { overflow: hidden; max-height: 0; opacity: 0; -webkit-transition: max-height 400ms var(--ease-state), opacity 300ms var(--ease-state); transition: max-height 400ms var(--ease-state), opacity 300ms var(--ease-state); }
 .card-expanded.open { opacity: 1; }
 .card-expanded p { margin-top: 20px; margin-bottom: 0; }
-.card-book { display: inline-block; margin-top: 16px; padding: 12px 28px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); }
+.card-expanded ul { margin-top: 12px; padding-left: 20px; }
+.card-expanded ul li { font-size: 15px; line-height: 1.6; color: var(--muted); margin-bottom: 4px; }
+.card-expanded strong { color: var(--text); font-weight: 500; }
+.card-expanded a { color: var(--terracotta); text-decoration: underline; transition: color 140ms var(--ease-state); }
+.card-expanded a:hover { color: var(--burgundy); }
+.card-book { display: inline-block; align-self: flex-start; margin-top: 16px; padding: 12px 28px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); border-radius: 3px; }
 .card-book:hover { background: var(--burgundy); color: var(--bg); }
 
 /* PARTNERSHIPS — logo carousel */
@@ -134,7 +140,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* CTA BAND */
 .cta-band { padding: 64px 32px; text-align: center; background: var(--bg); }
-.cta-btn { display: inline-block; padding: 16px 40px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); }
+.cta-btn { display: inline-block; padding: 16px 40px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; transition: background 140ms var(--ease-state); border-radius: 3px; }
 .cta-btn:hover { background: var(--burgundy); color: var(--bg); }
 
 /* FOOTER */
@@ -159,7 +165,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .about-founder h3 { font-family: var(--display); font-weight: 500; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 8px; }
 .about-founder .role { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terracotta); margin-bottom: 16px; display: block; }
 .about-founder p { font-size: 15px; line-height: 1.65; color: var(--text-70); max-width: 400px; margin: 0 auto; }
-.founder-photo { width: 100%; aspect-ratio: 3/4; background: var(--sand); display: grid; place-items: center; font-size: 0.9rem; color: var(--muted); margin-bottom: 24px; }
+.founder-photo { width: 100%; aspect-ratio: 3/4; background: var(--sand); display: grid; place-items: center; font-size: 0.9rem; color: var(--muted); margin-bottom: 24px; overflow: hidden; }
+.founder-photo img { width: 100%; height: 100%; object-fit: cover; }
 
 /* CONTACT */
 .contact-section { padding: 96px 32px; background: var(--text); }
@@ -185,7 +192,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .contact-form .options { display: flex; flex-wrap: wrap; gap: 12px 24px; }
 .contact-form .options label { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--bg); cursor: pointer; text-transform: none; letter-spacing: 0; font-weight: 400; margin-bottom: 0; }
 .contact-form .options input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--terracotta); cursor: pointer; }
-.contact-form .submit-btn { display: block; width: 100%; padding: 16px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; border: none; cursor: pointer; transition: background 140ms var(--ease-state); margin-top: 8px; }
+.contact-form .submit-btn { display: block; width: 100%; padding: 16px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; border: none; cursor: pointer; transition: background 140ms var(--ease-state); margin-top: 8px; border-radius: 3px; }
 .contact-form .submit-btn:hover { background: var(--burgundy); }
 
 /* SCROLL ANIMATIONS */
@@ -294,36 +301,81 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     <div class="section-header fade-in">
       <span class="eyebrow">What we do</span>
       <h2>Services</h2>
-      <span class="subtitle">[FOUNDERS TO WRITE: one line on the offering.]</span>
+      <span class="subtitle">Top Note offers bespoke scent experiences thoughtfully designed around discovery, personal expression, and a deeper appreciation of the art of fragrance.</span>
     </div>
     <div class="card-grid">
       <div class="card fade-in">
         <span class="card-eyebrow">01</span>
         <h3>Private Consultations</h3>
-        <p>[FOUNDERS TO WRITE: description for this service.]</p>
+        <p>A personalized scent discovery experience, designed around your individual taste, style, and sensibility.</p>
         <button class="card-toggle" onclick="toggleCard(this)">Learn more</button>
         <div class="card-expanded">
-          <p>[FOUNDERS TO WRITE: expanded description for Private Consultations.]</p>
+          <p>We begin by creating your unique fragrance profile through an exploration of the notes, textures, moods, and olfactory experiences that appeal to you. We then guide you through a curated selection of the most exciting niche and independent fragrance brands, introducing you to both familiar favorites and unexpected possibilities while sharing the stories, history, and craft behind each scent.</p>
+          <p>This experience is available both in-store at the premiere SF fragrance institution, <a href="https://ministryofscent.com/" target="_blank" rel="noopener">Ministry of Scent</a> &mdash; with locations in Pacific Heights and the Mission &mdash; or privately using our consultants' expansive libraries.</p>
+          <p><strong>Specialized consultation services include:</strong></p>
+          <ul>
+            <li>Signature Scents</li>
+            <li>Special Occasion Scents</li>
+            <li>Bridal Scents</li>
+            <li>Executive Fragrances</li>
+            <li>Spatial &amp; Ambient Scent Styling</li>
+            <li>Dating Scent Coaching</li>
+            <li>Couples Fragrance Discovery</li>
+          </ul>
+          <p><strong>Each consultation includes:</strong></p>
+          <ul>
+            <li>Bespoke fragrance profiling</li>
+            <li>Curated fragrance recommendations tailored to your needs</li>
+            <li>A guide to global niche boutiques and online shopping for niche and indie fragrance</li>
+            <li>Introduction to fragrance families, notes, concentrations, and scent structure</li>
+            <li>Personalized recommendations for continued discovery</li>
+          </ul>
+          <p>Private consultations are $175 for a 60 minute virtual consult and $200 for 90 minutes in person, either in-store or privately using our personal libraries.</p>
         </div>
         <a href="#contact" class="card-book">Book a consultation</a>
       </div>
       <div class="card fade-in">
         <span class="card-eyebrow">02</span>
         <h3>Corporate Events</h3>
-        <p>[FOUNDERS TO WRITE: description for this service.]</p>
+        <p>An elevated scent discovery experience designed to bring people together through the art and culture of fragrance.</p>
         <button class="card-toggle" onclick="toggleCard(this)">Learn more</button>
         <div class="card-expanded">
-          <p>[FOUNDERS TO WRITE: expanded description for Corporate Events.]</p>
+          <p>We create thoughtfully curated fragrance experiences for teams, clients, and guests, tailored to the character of your company, event, or audience. Guests are invited to explore a selection of distinctive fragrances while learning about the notes, stories, history, and craft behind each scent. Our experiences offer a sophisticated way to engage beyond the traditional corporate event.</p>
+          <p><strong>Corporate fragrance experiences can include some or all of the following:</strong></p>
+          <ul>
+            <li>Interactive fragrance discovery and guided scent exploration</li>
+            <li>Custom scent programming tailored to your group or event</li>
+            <li>Bespoke multisensory experiences, such as fragrance-inspired cocktail or dessert pairings</li>
+            <li>Private shopping experience at Ministry of Scent</li>
+            <li>Fragrance education and introductions to notes, families, and scent structure</li>
+            <li>Interactive scent bars for events and activations</li>
+            <li>Curated fragrance selections and personalized recommendations</li>
+            <li>Branded experiences, take-home samples, and other bespoke elements</li>
+          </ul>
+          <p>All offerings are customizable to your needs. Events in-store at Ministry of Scent also available. <a href="#contact">Contact us</a> for pricing.</p>
         </div>
         <a href="#contact" class="card-book">Book an event</a>
       </div>
       <div class="card fade-in">
         <span class="card-eyebrow">03</span>
         <h3>Private Events</h3>
-        <p>[FOUNDERS TO WRITE: description for this service.]</p>
+        <p>An elevated scent discovery experience for groups of 2 or more interested in learning more about niche and independent fragrances.</p>
         <button class="card-toggle" onclick="toggleCard(this)">Learn more</button>
         <div class="card-expanded">
-          <p>[FOUNDERS TO WRITE: expanded description for Private Events.]</p>
+          <p>We create festive, highly curated experiences expertly tailored to you and your guests, whether you're celebrating a big event, gathering with friends, or simply looking for a more memorable way to spend an afternoon or evening. Available also for curated collaborations, from fragrance-informed tasting menus to art-inspired scent pairings.</p>
+          <p>Guests are guided through a selection of distinctive fragrances, discovering new notes, textures, and scent profiles while learning about the stories, history, and craft behind each one. From guided fragrance discovery to interactive scent bars, we create an immersive experience that invites curiosity, conversation, and a deeper appreciation of scent.</p>
+          <p>Top Note can either provide entertainment at your event or run your event entirely, from entertainment and decor to staffing and venue sourcing.</p>
+          <p><strong>Private fragrance experiences include:</strong></p>
+          <ul>
+            <li>Guided fragrance discovery and scent exploration</li>
+            <li>Curated fragrance selections tailored to your group</li>
+            <li>Introduction to fragrance families, notes, concentrations, and scent structure</li>
+            <li>Interactive scent bars and fragrance activities</li>
+            <li>Personalized fragrance recommendations</li>
+            <li>Optional take-home samples and bespoke elements</li>
+            <li>Optional add-on of bespoke, fragrance-inspired cocktails</li>
+          </ul>
+          <p>All offerings are customizable to your needs. Events in-store at Ministry of Scent also available. <a href="#contact">Contact us</a> for pricing.</p>
         </div>
         <a href="#contact" class="card-book">Book an event</a>
       </div>
@@ -371,8 +423,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 </section>
 
 <section id="partnerships" class="partnerships fade-in">
-  <h2>[Partnership Headline]</h2>
-  <p class="cta-body">[One sentence of filler copy, including prompting the viewer to request a deck.]</p>
+  <h2>Partner With Us</h2>
+  <p class="cta-body">For fragrance brands and businesses looking to reach a discerning, engaged audience, get in touch below to explore opportunities for collaboration and inclusion in our curated recommendations and experiences. Top Note offers your brand a unique form of experiential marketing to discerning, high-value audiences through private consultations and multi-sensory events. We partner with a select group of fragrance houses each season.</p>
+  <p class="cta-body">If you are looking to connect with customers beyond a scent strip impression, we'd love to explore a collaboration.</p>
   <a href="#contact" class="cta-btn">Get in touch</a>
 </section>
 
@@ -380,19 +433,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   <div class="about-inner">
     <span class="eyebrow">About Us</span>
     <h2>Our Story</h2>
-    <p>[FOUNDERS TO WRITE: mission statement.]</p>
     <div class="about-founders">
       <div class="about-founder fade-in">
-        <div class="founder-photo"><img src="assets/photography/vanessa.jpeg" alt="Vanessa Eni" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div class="founder-photo"><img src="assets/photography/vanessa.jpeg" alt="Vanessa Eni"></div>
         <h3>Vanessa Eni</h3>
         <span class="role">Co-Founder</span>
-        <p>[FOUNDERS TO WRITE: bio for Vanessa.]</p>
+        <p>Vanessa Eni is a perfumer and content creator known for her exceptional taste and recommendations. For over 10 years, she has collected unique fragrances from around the world in her travels to 50+ countries. A former Wall Street banker and private equity investor, she applies the same rigor used to analyze investments to crafting perfume formulas. She is training her nose under a master perfumer and takes courses at the Institute of Art and Olfaction. You can follow her perfumery journey on TikTok @onwaperfumes. She loves the magic scent lends to convey the emotional complexity of the intangible. Her favorite notes are orris, ambrette, and rose.</p>
       </div>
       <div class="about-founder fade-in">
-        <div class="founder-photo">[Photo — awaiting photographer]</div>
+        <div class="founder-photo"><img src="assets/photography/kelsey.png" alt="Kelsey Eisen" style="object-position: center top; transform: scale(1.25); transform-origin: bottom center;"></div>
         <h3>Kelsey Eisen</h3>
         <span class="role">Co-Founder</span>
-        <p>[FOUNDERS TO WRITE: bio for Kelsey.]</p>
+        <p>Kelsey Eisen is a journalist, content strategist, and co-founder of Top Note. A former attorney, Kelsey traded the courtroom for a career writing about travel, culture, and beauty, getting to indulge her lifelong love of perfume by writing about it. Today, she works in content marketing while continuing her journalism practice, bringing a storyteller's perspective and a keen eye for the cultural influences, personal histories, and creative expression behind fragrance. Her favorite thing about perfume is its ability to evoke memories, inspire a sense of place, and convey emotions that bypass words entirely. Her favorite notes right now are rice, iris, and saffron.</p>
       </div>
     </div>
   </div>
