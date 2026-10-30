@@ -1,0 +1,47 @@
+<!-- @dsCard group="Scent Quiz" viewport="600x760" name="Scent Quiz — Editorial Paper Edition" subtitle="Vintage perfume-magazine restyle of the signature-scent diagnostic" -->
+<!-- @startingPoint section="Scent Quiz" subtitle="Full editorial-paper quiz: intro → vibes → scent profile → results" viewport="600x760" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Note — Signature Scent Discovery</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23d83b22'/></svg>">
+<style>
+  /* Self-hosted brand fonts (offline-safe). Licensed OFL 1.1. */
+  @font-face {
+    font-family: 'Syne';
+    src: url('assets/fonts/Syne-Variable.ttf') format('truetype-variations');
+    font-weight: 400 800; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cormorant';
+    src: url('assets/fonts/Cormorant-Variable.ttf') format('truetype-variations');
+    font-weight: 300 600; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Cormorant';
+    src: url('assets/fonts/Cormorant-Italic-Variable.ttf') format('truetype-variations');
+    font-weight: 300 600; font-style: italic; font-display: swap;
+  }
+</style>
+<link rel="stylesheet" href="quiz.css?v=65">
+<script src="image-slot.js"></script>
+</head>
+<body>
+  <!-- editorial page-margin framing -->
+  <div class="frame">
+    <div class="row">
+      <span class="lbl" id="fLeft">Top Note</span>
+      <span class="lbl center" id="fCenter">Fragrance Curators</span>
+      <span class="lbl" id="fRight">Est. SF</span>
+    </div>
+    <div class="foot"><span>Your Fragrance Profile Diagnostic</span></div>
+  </div>
+
+  <div id="app"></div>
+
+  <script src="quiz-data.js"></script>
+  <script src="quiz-app.js"></script>
+</body>
+</html>

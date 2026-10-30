@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Event Intake — Top Note Scent Studio</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23B5583A'/></svg>">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH4JZ6T14"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CSH4JZ6T14');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fahkwang:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF5EC;
+  --text: #2A1C12;
+  --terracotta: #B5583A;
+  --burgundy: #6B1F2A;
+  --amber: #C1893C;
+  --sand: #E4C9A3;
+  --muted: #8B7B68;
+  --text-70: rgba(42, 28, 18, 0.7);
+  --muted-40: rgba(139, 123, 104, 0.4);
+  --ease-state: cubic-bezier(.4, 0, .2, 1);
+  --ease-entrance: cubic-bezier(.16, 1, .3, 1);
+  --display: 'Fahkwang', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); font-family: 'DM Sans', system-ui, sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 2px; }
+
+/* NAV */
+.nav { position: sticky; top: 0; z-index: 50; height: 66px; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; border-bottom: 1px solid var(--muted-40); }
+.wordmark { display: block; text-decoration: none; line-height: 1; }
+.wordmark { overflow: hidden; height: 66px; display: flex; align-items: center; }
+.wordmark img { height: 216px; width: auto; mix-blend-mode: multiply; margin-left: -45px; transform: scale(1.15); transform-origin: left center; }
+.nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
+.nav-links a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 13px; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); }
+.nav-links a:hover { color: var(--terracotta); }
+.hamburger { display: none; flex-direction: column; gap: 6px; padding: 8px; }
+.hamburger span { display: block; width: 24px; height: 1px; background: var(--text); transition: transform 240ms var(--ease-state), opacity 240ms var(--ease-state); }
+
+.menu-overlay { position: fixed; inset: 0; z-index: 90; display: none; }
+.menu-overlay.open { display: block; }
+.dropdown-menu { position: fixed; top: 56px; right: 20px; z-index: 100; background: var(--bg); border: 1px solid var(--muted-40); padding: 16px 32px; display: none; flex-direction: column; gap: 16px; opacity: 0; visibility: hidden; -webkit-transform: translateY(-8px); transform: translateY(-8px); pointer-events: none; -webkit-transition: opacity 240ms var(--ease-state), -webkit-transform 240ms var(--ease-state), visibility 0ms 240ms; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state), visibility 0ms 240ms; }
+.dropdown-menu.open { opacity: 1; visibility: visible; -webkit-transform: translateY(0); transform: translateY(0); pointer-events: auto; -webkit-transition: opacity 240ms var(--ease-state), -webkit-transform 240ms var(--ease-state), visibility 0ms; transition: opacity 240ms var(--ease-state), transform 240ms var(--ease-state), visibility 0ms; }
+.dropdown-menu a { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; transition: color 140ms var(--ease-state); white-space: nowrap; }
+.dropdown-menu a:hover { color: var(--terracotta); }
+
+/* INTAKE FORM */
+.intake-section { padding: 72px 32px; }
+.intake-inner { max-width: 640px; margin: 0 auto; }
+.intake-section .eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta); margin-bottom: 20px; display: block; text-align: center; }
+.intake-section h1 { font-family: var(--display); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 48px); color: var(--text); margin-bottom: 24px; text-align: center; text-wrap: balance; }
+.intake-intro { font-size: 15px; line-height: 1.7; color: var(--text-70); margin-bottom: 48px; text-align: center; }
+
+.intake-form .form-group { margin-bottom: 28px; }
+.intake-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+.intake-form .form-row .form-group { margin-bottom: 0; }
+.intake-form label { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text); margin-bottom: 8px; font-weight: 500; }
+.intake-form .sublabel { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--muted); font-size: 12px; margin-left: 4px; }
+.intake-form input[type="text"],
+.intake-form input[type="email"],
+.intake-form input[type="tel"],
+.intake-form input[type="date"],
+.intake-form input[type="number"],
+.intake-form select,
+.intake-form textarea { width: 100%; padding: 14px 16px; border: 1px solid var(--muted-40); background: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text); transition: border-color 140ms var(--ease-state); outline: none; border-radius: 3px; -webkit-appearance: none; appearance: none; }
+.intake-form input:focus,
+.intake-form select:focus,
+.intake-form textarea:focus { border-color: var(--terracotta); }
+.intake-form textarea { min-height: 120px; resize: vertical; }
+.intake-form select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B7B68' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+
+.intake-form .radio-group,
+.intake-form .checkbox-group { margin-bottom: 28px; }
+.intake-form .group-label { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text); margin-bottom: 14px; font-weight: 500; }
+.intake-form .options { display: flex; flex-direction: column; gap: 10px; }
+.intake-form .options.inline { flex-direction: row; flex-wrap: wrap; gap: 12px 24px; }
+.intake-form .options label { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--text); cursor: pointer; text-transform: none; letter-spacing: 0; font-weight: 400; }
+.intake-form .options input[type="radio"],
+.intake-form .options input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--terracotta); cursor: pointer; flex-shrink: 0; }
+
+.intake-form .conditional { display: none; margin-top: 12px; padding-left: 26px; }
+.intake-form .conditional.visible { display: block; }
+
+.intake-form .section-divider { border: none; border-top: 1px solid var(--muted-40); margin: 40px 0; }
+
+.intake-form .submit-btn { display: block; width: 100%; padding: 16px; background: var(--terracotta); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; border: none; cursor: pointer; transition: background 140ms var(--ease-state); margin-top: 8px; border-radius: 3px; }
+.intake-form .submit-btn:hover { background: var(--burgundy); }
+
+.thank-you { display: none; text-align: center; padding: 80px 0; }
+.thank-you h2 { font-family: var(--display); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(22px, 3vw, 36px); color: var(--text); margin-bottom: 16px; }
+.thank-you p { font-size: 15px; line-height: 1.7; color: var(--text-70); }
+
+/* FOOTER */
+.footer { background: var(--text); padding: 64px 32px; border-top: 1px solid var(--muted-40); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; }
+.footer .wordmark { margin-bottom: 16px; height: 192px; }
+.footer .wordmark img { height: 576px; filter: invert(1); mix-blend-mode: screen; margin-left: -120px; }
+.footer-tagline { font-size: 14px; color: var(--sand); line-height: 1.5; font-style: italic; }
+.footer h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--sand); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: var(--bg); transition: color 140ms var(--ease-state); }
+.footer-links a:hover { color: var(--terracotta); }
+.footer-legal { grid-column: 1 / -1; font-size: 13px; color: var(--sand); padding-top: 32px; border-top: 1px solid rgba(139, 123, 104, 0.3); }
+
+/* Honeypot */
+.ohnohoney { position: absolute; left: -9999px; }
+
+@media (max-width: 768px) {
+  .nav { height: 56px; padding: 0 20px; }
+  .wordmark { height: 56px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .dropdown-menu { display: flex; }
+  .intake-section { padding: 52px 20px; }
+  .intake-form .form-row { grid-template-columns: 1fr; gap: 24px; }
+  .footer { padding: 48px 20px; }
+  .footer .wordmark { height: 120px; }
+  .footer .wordmark img { height: 360px; margin-left: -75px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .dropdown-menu { -webkit-transition: none; transition: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="wordmark"><img src="../assets/topnote-gruppo.png" alt="Top Note"></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../index.html#services">Services</a></li>
+    <li><a href="../index.html#partnerships">Brand Partnerships</a></li>
+    <li><a href="../index.html#about">About Us</a></li>
+    <li><a href="../index.html#contact">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="menu-overlay" onclick="closeMenu()"></div>
+<div class="dropdown-menu">
+  <a href="../index.html" onclick="closeMenu()">Home</a>
+  <a href="../index.html#services" onclick="closeMenu()">Services</a>
+  <a href="../index.html#partnerships" onclick="closeMenu()">Brand Partnerships</a>
+  <a href="../index.html#about" onclick="closeMenu()">About Us</a>
+  <a href="../index.html#contact" onclick="closeMenu()">Contact Us</a>
+</div>
+
+<section class="intake-section">
+  <div class="intake-inner">
+    <span class="eyebrow">Event Intake</span>
+    <h1>Plan Your Event</h1>
+    <p class="intake-intro">Thank you for your interest in an event with Top Note. We'd appreciate it if you completed this form so we can best prepare for the initial consultation. If you already know the information below, please fill out the entries accordingly. Feel free to mark &ldquo;not sure&rdquo; or &ldquo;N/A&rdquo; for any sections that you are not yet sure of. We are happy to help you find the right event plan for you. Following the initial consultation, Top Note will provide a proposal and a deposit of 50% will be requested to secure your booking.</p>
+
+    <form id="intakeForm" class="intake-form" action="https://formspree.io/f/xvkkbrjl" method="POST">
+      <input type="hidden" name="_subject" value="New Event Intake Submission">
+      <input type="text" name="_gotcha" class="ohnohoney" tabindex="-1" autocomplete="off">
+
+      <!-- 1. Name -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="company">Company / group name <span class="sublabel">(optional)</span></label>
+          <input type="text" id="company" name="company">
+        </div>
+      </div>
+
+      <!-- 3-4. Contact -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+      </div>
+
+      <!-- 5. Preferred contact -->
+      <div class="radio-group">
+        <span class="group-label">How would you prefer to be contacted?</span>
+        <div class="options inline">
+          <label><input type="radio" name="contact_preference" value="Phone" required> Phone</label>
+          <label><input type="radio" name="contact_preference" value="Email"> Email</label>
+        </div>
+      </div>
+
+      <!-- 6. How did you hear -->
+      <div class="form-group">
+        <label for="referral">How did you hear about us?</label>
+        <input type="text" id="referral" name="referral">
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 7. What are you looking for -->
+      <div class="checkbox-group">
+        <span class="group-label">What are you looking for with Top Note? <span class="sublabel">(select all that apply)</span></span>
+        <div class="options">
+          <label><input type="checkbox" name="looking_for" value="A specific event"> A specific event</label>
+          <label><input type="checkbox" name="looking_for" value="An ongoing relationship"> An ongoing relationship</label>
+          <label><input type="checkbox" name="looking_for" value="Adding Top Note in your vendor list"> Adding Top Note in your vendor list</label>
+        </div>
+      </div>
+
+      <!-- 8. Private or corporate -->
+      <div class="radio-group">
+        <span class="group-label">Are you interested in a private or corporate event experience?</span>
+        <div class="options inline">
+          <label><input type="radio" name="event_category" value="Private event" required> Private event</label>
+          <label><input type="radio" name="event_category" value="Corporate event"> Corporate event</label>
+        </div>
+      </div>
+
+      <!-- 9. Event type -->
+      <div class="radio-group">
+        <span class="group-label">What type of event are you interested in?</span>
+        <div class="options">
+          <label><input type="radio" name="event_type" value="Multisensory event: drink and food pairings with fragrance sampling" required> Multisensory event: drink and food pairings with fragrance sampling</label>
+          <label><input type="radio" name="event_type" value="Fragrance-only event: education, activities, and sampling"> Fragrance-only event: education, activities, and sampling, with or without catering</label>
+          <label><input type="radio" name="event_type" value="Scent bar"> Scent bar</label>
+          <label><input type="radio" name="event_type" value="Private shopping at Ministry of Scent"> Private shopping at Ministry of Scent</label>
+          <label><input type="radio" name="event_type" value="Not sure"> Not sure</label>
+        </div>
+      </div>
+
+      <!-- 10. Budget -->
+      <div class="form-group">
+        <label for="budget">What is your budget range?</label>
+        <input type="text" id="budget" name="budget">
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 11. Event date -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="event_date">Preferred event date</label>
+          <input type="date" id="event_date" name="event_date">
+        </div>
+        <div class="form-group">
+          <label for="time_of_day">Time of day</label>
+          <select id="time_of_day" name="time_of_day">
+            <option value="" disabled selected>Select</option>
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Evening">Evening</option>
+            <option value="Flexible">Flexible</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 12. Date flexible -->
+      <div class="radio-group">
+        <span class="group-label">Is your date flexible?</span>
+        <div class="options inline">
+          <label><input type="radio" name="date_flexible" value="Yes"> Yes</label>
+          <label><input type="radio" name="date_flexible" value="No"> No</label>
+        </div>
+      </div>
+
+      <!-- 13. Duration -->
+      <div class="radio-group">
+        <span class="group-label">How long would you like the event to be? <span class="sublabel">(we recommend 2 to 3 hours)</span></span>
+        <div class="options">
+          <label><input type="radio" name="duration" value="1-2 hours"> 1&ndash;2 hours</label>
+          <label><input type="radio" name="duration" value="2-3 hours"> 2&ndash;3 hours</label>
+          <label><input type="radio" name="duration" value="3-5 hours"> 3&ndash;5 hours</label>
+          <label><input type="radio" name="duration" value="5-8 hours"> 5&ndash;8 hours</label>
+          <label><input type="radio" name="duration" value="Not sure"> Not sure</label>
+        </div>
+      </div>
+
+      <!-- 14. Party size -->
+      <div class="radio-group">
+        <span class="group-label">What is your average party size?</span>
+        <div class="options">
+          <label><input type="radio" name="party_size" value="2 to 10"> 2 to 10</label>
+          <label><input type="radio" name="party_size" value="11 to 25"> 11 to 25</label>
+          <label><input type="radio" name="party_size" value="26 to 50"> 26 to 50</label>
+          <label><input type="radio" name="party_size" value="51 to 100"> 51 to 100</label>
+          <label><input type="radio" name="party_size" value="100+"> 100+</label>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 15. Guest details -->
+      <div class="form-group">
+        <label for="guests">Tell us about your guests</label>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Including age range, familiarity with fragrance, and how everyone knows each other.</p>
+        <textarea id="guests" name="guests"></textarea>
+      </div>
+
+      <!-- 16. Accessibility -->
+      <div class="form-group">
+        <label for="accessibility">Accessibility needs, dietary restrictions, or sensitivities</label>
+        <textarea id="accessibility" name="accessibility"></textarea>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 17. Venue -->
+      <div class="radio-group" id="venueGroup">
+        <span class="group-label">Where would you like to host your event?</span>
+        <div class="options">
+          <label><input type="radio" name="venue" value="Ministry of Scent, San Francisco"> Ministry of Scent, San Francisco</label>
+          <label><input type="radio" name="venue" value="Rosewood Hotel, Menlo Park"> Rosewood Hotel, Menlo Park</label>
+          <label><input type="radio" name="venue" value="Allied Arts Guild, Menlo Park"> Allied Arts Guild, Menlo Park</label>
+          <label><input type="radio" name="venue" value="Mighty Mighty Studio, Oakland"> Mighty Mighty Studio, Oakland</label>
+          <label><input type="radio" name="venue" value="Work with Top Note to source a venue"> I want to work with Top Note to source a suitable venue</label>
+          <label><input type="radio" name="venue" value="Other"> A venue of your choosing</label>
+        </div>
+        <div class="conditional" id="venueOther">
+          <input type="text" name="venue_other" placeholder="Please specify your venue">
+        </div>
+      </div>
+
+      <!-- 18. Theme -->
+      <div class="form-group">
+        <label for="theme">What theme or vibe do you have in mind?</label>
+        <textarea id="theme" name="theme"></textarea>
+      </div>
+
+      <!-- 19. Occasion -->
+      <div class="form-group">
+        <label for="occasion">What is the occasion?</label>
+        <input type="text" id="occasion" name="occasion">
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- 20. Services -->
+      <div class="radio-group" id="servicesGroup">
+        <span class="group-label">What services would you like Top Note to provide?</span>
+        <div class="options">
+          <label><input type="radio" name="services" value="Full planning (includes catering, staffing, decor, photography, DJ, and goodie bags)"> Full planning (includes catering, staffing, decor, photography, DJ, and goodie bags)</label>
+          <label><input type="radio" name="services" value="Entertainment only"> Entertainment only</label>
+          <label><input type="radio" name="services" value="Specific services only"> Specific services only</label>
+          <label><input type="radio" name="services" value="Not sure"> Not sure</label>
+        </div>
+        <div class="conditional" id="servicesOther">
+          <input type="text" name="services_specific" placeholder="Please specify which services">
+        </div>
+      </div>
+
+      <!-- 22. Add-ons -->
+      <div class="checkbox-group" id="addonsGroup">
+        <span class="group-label">Would you like to add any of the following? <span class="sublabel">(select all that apply)</span></span>
+        <div class="options">
+          <label><input type="checkbox" name="addons" value="Bar service"> Bar service</label>
+          <div class="conditional" id="barUnder21">
+            <select name="guests_under_21">
+              <option value="" disabled selected>Will any guests be under 21?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <label><input type="checkbox" name="addons" value="Cocktail pairings"> Cocktail pairings</label>
+          <label><input type="checkbox" name="addons" value="Food pairings"> Food pairings</label>
+          <label><input type="checkbox" name="addons" value="Mini-consultations during the event"> Mini-consultations during the event</label>
+          <label><input type="checkbox" name="addons" value="Co-branding"> Co-branding</label>
+          <label><input type="checkbox" name="addons" value="Not sure"> Not sure</label>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+    <div class="thank-you" id="thankYou">
+      <h2>Thank You</h2>
+      <p>Thank you for completing the form. We will respond within 1&ndash;2 business days.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <a href="../index.html" class="wordmark"><img src="../assets/topnote-gruppo.png" alt="Top Note"></a>
+      <p class="footer-tagline">Your fragrance curators</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#services">Services</a></li>
+        <li><a href="../index.html#partnerships">Brand Partnerships</a></li>
+        <li><a href="../index.html#about">About Us</a></li>
+        <li><a href="../index.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:topnotescentstudio@gmail.com">Email</a></li>
+        <li><a href="https://www.instagram.com/topnotescentstudio/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+    <p class="footer-legal">&copy; 2026 Top Note Scent Studio. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.querySelector('.dropdown-menu').classList.toggle('open');
+  document.querySelector('.menu-overlay').classList.toggle('open');
+}
+function closeMenu() {
+  document.querySelector('.dropdown-menu').classList.remove('open');
+  document.querySelector('.menu-overlay').classList.remove('open');
+}
+
+// Conditional field: venue "Other"
+document.querySelectorAll('input[name="venue"]').forEach(function(r) {
+  r.addEventListener('change', function() {
+    document.getElementById('venueOther').classList.toggle('visible', this.value === 'Other');
+  });
+});
+
+// Conditional field: services "Specific services only"
+document.querySelectorAll('input[name="services"]').forEach(function(r) {
+  r.addEventListener('change', function() {
+    document.getElementById('servicesOther').classList.toggle('visible', this.value === 'Specific services only');
+  });
+});
+
+// Conditional field: bar service under 21
+document.querySelectorAll('input[name="addons"]').forEach(function(cb) {
+  cb.addEventListener('change', function() {
+    var barChecked = document.querySelector('input[name="addons"][value="Bar service"]').checked;
+    document.getElementById('barUnder21').classList.toggle('visible', barChecked);
+  });
+});
+
+// Form submission: show thank you, hide form
+document.getElementById('intakeForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = this;
+  var data = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(function(res) {
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('thankYou').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      alert('Something went wrong. Please try again or email us at topnotescentstudio@gmail.com.');
+    }
+  }).catch(function() {
+    alert('Something went wrong. Please try again or email us at topnotescentstudio@gmail.com.');
+  });
+});
+</script>
+
+</body>
+</html>
